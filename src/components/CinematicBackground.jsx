@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 
 export default function CinematicBackground() {
   const canvasRef = useRef(null);
-  const [timecode, setTimecode] = useState('00:14:28:16');
-  const [hudVisible, setHudVisible] = useState(true);
+  const timecodeRef = useRef(null);
+  const [hudVisible] = useState(true);
 
-  // Timecode generator simulating a professional cinema camera clock
+  // High-performance timecode update via direct DOM ref (0 React re-renders)
   useEffect(() => {
     let frame = 16;
     let sec = 28;
@@ -28,7 +28,9 @@ export default function CinematicBackground() {
         }
       }
       const pad = (n) => n.toString().padStart(2, '0');
-      setTimecode(`${pad(hr)}:${pad(min)}:${pad(sec)}:${pad(frame)}`);
+      if (timecodeRef.current) {
+        timecodeRef.current.textContent = `${pad(hr)}:${pad(min)}:${pad(sec)}:${pad(frame)}`;
+      }
     }, 1000 / 24);
 
     return () => clearInterval(interval);
@@ -206,7 +208,7 @@ export default function CinematicBackground() {
       {/* Background Interactive Ambient Canvas (behind page content) */}
       <canvas
         ref={canvasRef}
-        className="fixed inset-0 pointer-events-none z-0 opacity-80"
+        className="fixed inset-0 pointer-events-none z-0 opacity-70"
         style={{ mixBlendMode: 'screen' }}
       />
 
@@ -223,7 +225,7 @@ export default function CinematicBackground() {
               <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-ping inline-block" />
               <span>REC</span>
             </span>
-            <span className="text-white font-mono tracking-wider font-semibold">{timecode}</span>
+            <span ref={timecodeRef} className="text-white font-mono tracking-wider font-semibold">00:14:28:16</span>
             <span className="text-[#e6b980] border-l border-white/10 pl-2">8K RAW</span>
           </div>
 

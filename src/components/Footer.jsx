@@ -54,6 +54,22 @@ export default function Footer({ onSocialClick }) {
               Award-winning visual agency specializing in high-end commercial films, luxury weddings, aerial cinematography, and editorial portraits. Crafted on 8K cinema cameras and medium format stills.
             </p>
 
+            {/* Direct Contact Details */}
+            <div className="pt-1 text-xs font-mono space-y-1.5 text-neutral-300">
+              <div className="flex items-center gap-2">
+                <span className="text-[#e6b980] font-semibold">Phone:</span>
+                <a href="tel:0523406989" className="hover:text-white hover:underline transition-colors">
+                  0523406989 (+971 52 340 6989)
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-[#e6b980] font-semibold">Email:</span>
+                <a href="mailto:ayuvbastola14@gmail.com" className="hover:text-white hover:underline transition-colors">
+                  ayuvbastola14@gmail.com
+                </a>
+              </div>
+            </div>
+
             <div className="flex items-center gap-3 pt-2 text-neutral-400">
               {/* Instagram SVG */}
               <a

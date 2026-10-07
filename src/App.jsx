@@ -8,7 +8,6 @@ import AboutSection from './components/AboutSection';
 import Testimonials from './components/Testimonials';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
-import CustomCursor from './components/CustomCursor';
 import ScrollProgress from './components/ScrollProgress';
 import WhatsAppButton from './components/WhatsAppButton';
 import CinematicBackground from './components/CinematicBackground';
@@ -84,10 +83,7 @@ export default function App() {
   // If viewing Social Media biolink & digital contact card
   if (isSocialPage) {
     return (
-      <>
-        <CustomCursor />
-        <SocialMediaPage onBackToHome={handleBackToHome} />
-      </>
+      <SocialMediaPage onBackToHome={handleBackToHome} />
     );
   }
 
@@ -102,9 +98,6 @@ export default function App() {
       {/* 35mm Film Sprockets Margin Rails */}
       <div className="film-sprockets-left hidden xl:block" />
       <div className="film-sprockets-right hidden xl:block" />
-
-      {/* Custom Lerp Cursor (Desktop) */}
-      <CustomCursor />
 
       {/* Top Scroll Progress Line */}
       <ScrollProgress />

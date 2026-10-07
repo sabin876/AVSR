@@ -140,6 +140,36 @@ export default function ContactForm({ initialPackageData }) {
           <p className="mt-3 text-neutral-400 text-sm sm:text-base font-light max-w-xl mx-auto">
             Tell us about your production vision, timeline, and location. Our directors review inquiries within 24 hours.
           </p>
+
+          {/* Direct Contact Details Badges */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs font-mono">
+            <a
+              href="tel:0523406989"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 hover:border-[#e6b980] text-neutral-300 hover:text-white transition-all shadow-sm group"
+              title="Call 0523406989"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#e6b980] group-hover:scale-110 transition-transform" />
+              <span>0523406989</span>
+            </a>
+            <a
+              href="mailto:ayuvbastola14@gmail.com"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 hover:border-[#e6b980] text-neutral-300 hover:text-white transition-all shadow-sm group"
+              title="Email ayuvbastola14@gmail.com"
+            >
+              <Mail className="w-3.5 h-3.5 text-[#e6b980] group-hover:scale-110 transition-transform" />
+              <span>ayuvbastola14@gmail.com</span>
+            </a>
+            <a
+              href="https://wa.me/971523406989"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#25D366]/10 border border-[#25D366]/30 hover:border-[#25D366] text-[#25D366] hover:text-white transition-all shadow-sm group"
+              title="WhatsApp 0523406989"
+            >
+              <MessageCircle className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
+              <span>WhatsApp: 0523406989</span>
+            </a>
+          </div>
         </div>
 
         {/* Multi-Step Wizard Container */}
@@ -398,7 +428,7 @@ export default function ContactForm({ initialPackageData }) {
                           type="email"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          placeholder="elena@company.com"
+                          placeholder="ayuvbastola14@gmail.com"
                           className="w-full px-4 py-2.5 bg-white/[0.03] border border-white/10 rounded-xl text-xs text-white focus:outline-none focus:border-[#e6b980]"
                         />
                         {errors.email && (
@@ -419,7 +449,7 @@ export default function ContactForm({ initialPackageData }) {
                           type="tel"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          placeholder="+971 52 340 6989"
+                          placeholder="0523406989"
                           className="w-full px-4 py-2.5 bg-white/[0.03] border border-white/10 rounded-xl text-xs text-white focus:outline-none focus:border-[#e6b980]"
                         />
                       </div>

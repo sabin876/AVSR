@@ -1,125 +1,139 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Camera, 
-  Aperture, 
-  Sliders, 
   Maximize2, 
-  Sparkles, 
   Focus, 
   Zap, 
-  Check, 
-  Eye,
   X,
   Layers,
   ChevronRight,
-  ChevronLeft
+  ChevronLeft,
+  Volume2,
+  VolumeX,
+  Play,
+  Pause
 } from 'lucide-react';
 import { sounds } from '../utils/soundEffects';
 
-// Curated high-end photography & photoshoot projects
-const PHOTOSHOOT_STILLS = [
+// Default reels matching hero background videos
+const DEFAULT_STILLS = [
   {
-    id: 'fashion-editorial',
-    title: 'Haute Couture: Ethereal Shadows',
-    genre: 'Editorial Portrait',
-    badge: 'Vogue Milano Spread',
-    camera: 'Hasselblad X2D 100C',
-    lens: 'XCD 90V f/2.5 Prime',
+    id: 'reel-img5914',
+    title: 'AVSR Master Reel (IMG_5914)',
+    subtitle: 'Signature Narrative & Commercial Film',
+    genre: 'Master Cinema Reel',
+    badge: 'IMG_5914 • 8K Master',
+    camera: 'RED V-Raptor 8K VV',
+    lens: 'Cooke 50mm Anamorphic /i',
     settings: {
-      shutter: '1/250s',
-      aperture: 'f/2.5',
-      iso: 'ISO 64',
+      shutter: '1/48s',
+      aperture: 'T2.0',
+      iso: 'ISO 800',
       kelvin: '5600K',
-      format: '100MP 16-Bit RAW'
+      format: '8K DCI RAW'
     },
-    location: 'Studio Milano • Italy',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85',
+    location: 'AVSR Vision Studio',
+    video: '/videos/IMG_5914.mp4',
+    videoUrl: '/videos/IMG_5914.mp4',
+    image: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=85',
+    poster: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1920&q=80',
     colorPalette: ['#1c1917', '#e6b980', '#d97706', '#44403c'],
     accentColor: '#e6b980'
   },
   {
-    id: 'auto-commercial',
-    title: 'Porsche GT3 RS: Midnight Apex',
-    genre: 'Commercial Motion & Stills',
-    badge: 'Awwwards Feature',
-    camera: 'RED V-Raptor 8K VV',
-    lens: 'Cooke 50mm Anamorphic /i',
+    id: 'reel-cricket',
+    title: 'Cricket Cinema Reel',
+    subtitle: 'High-Speed Action & Sports Cinematography',
+    genre: 'Sports Action Cinema',
+    badge: 'cricket.mp4 • 4K RAW',
+    camera: 'Sony FX6 Cinema Line',
+    lens: 'Sony FE 200-600mm f/5.6-6.3 G OSS',
     settings: {
-      shutter: '1/1000s',
-      aperture: 'T2.3',
-      iso: 'ISO 800',
-      kelvin: '4200K',
-      format: '8K DCI RAW 120fps'
+      shutter: '1/2000s',
+      aperture: 'f/5.6',
+      iso: 'ISO 500',
+      kelvin: '5600K',
+      format: '4K DCI 120fps'
     },
-    location: 'Yas Marina Circuit • Abu Dhabi',
-    image: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1200&q=85',
-    colorPalette: ['#0f172a', '#38bdf8', '#0284c7', '#1e293b'],
-    accentColor: '#38bdf8'
-  },
-  {
-    id: 'lake-como-wedding',
-    title: 'Lake Como Heirloom Romance',
-    genre: 'Luxury Destination Wedding',
-    badge: 'Harper’s Bazaar Weddings',
-    camera: 'Leica M6 35mm + Sony FX6',
-    lens: 'Summilux 35mm f/1.4 ASPH',
-    settings: {
-      shutter: '1/500s',
-      aperture: 'f/1.4',
-      iso: 'ISO 400',
-      kelvin: 'Golden Hour',
-      format: 'Kodak Portra 400 Film'
-    },
-    location: 'Villa d’Este • Lake Como',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85',
-    colorPalette: ['#1c1917', '#fde047', '#f59e0b', '#78350f'],
-    accentColor: '#f59e0b'
-  },
-  {
-    id: 'nordic-expedition',
-    title: 'Nordic Solitude: Volcanic Glaciers',
-    genre: 'Aerial Drone & Landscape',
-    badge: 'NatGeo Expeditions',
-    camera: 'DJI Inspire 3 (Zenmuse X9)',
-    lens: 'DL 24mm F2.8 LS ASPH',
-    settings: {
-      shutter: '1/1600s',
-      aperture: 'f/2.8',
-      iso: 'ISO 100',
-      kelvin: '5400K',
-      format: '8K CinemaDNG RAW'
-    },
-    location: 'Vatnajökull Highlands • Iceland',
-    image: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1200&q=85',
-    colorPalette: ['#0c4a6e', '#bae6fd', '#38bdf8', '#0369a1'],
-    accentColor: '#38bdf8'
+    location: 'International Cricket Stadium',
+    video: '/videos/cricket.mp4',
+    videoUrl: '/videos/cricket.mp4',
+    image: 'https://images.unsplash.com/photo-1531415074868-836332ff4296?auto=format&fit=crop&w=1200&q=85',
+    poster: 'https://images.unsplash.com/photo-1531415074868-836332ff4296?auto=format&fit=crop&w=1920&q=80',
+    colorPalette: ['#064e3b', '#10b981', '#34d399', '#022c22'],
+    accentColor: '#10b981'
   }
 ];
 
-export default function PhotoViewfinderCard({ onBookShoot }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+export default function PhotoViewfinderCard({ 
+  onBookShoot, 
+  activeReelIndex, 
+  onSelectReel, 
+  reels 
+}) {
+  const stillsList = reels || DEFAULT_STILLS;
+  const [internalIndex, setInternalIndex] = useState(0);
+
+  const currentIndex = typeof activeReelIndex === 'number' ? activeReelIndex : internalIndex;
+  const currentStill = stillsList[currentIndex] || stillsList[0];
+
   const [isRawLog, setIsRawLog] = useState(false);
   const [showGrid, setShowGrid] = useState(true);
   const [isFlashing, setIsFlashing] = useState(false);
   const [shotCount, setShotCount] = useState(142);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [timecode, setTimecode] = useState('01:24:32:14');
+  const timecodeDisplayRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
 
-  const currentStill = PHOTOSHOOT_STILLS[currentIndex];
-
-  // Dynamic live 24fps camera timecode simulation
+  // Auto-play when active video changes
   useEffect(() => {
-    const timer = setInterval(() => {
-      const now = new Date();
-      const h = String(now.getHours()).padStart(2, '0');
-      const m = String(now.getMinutes()).padStart(2, '0');
-      const s = String(now.getSeconds()).padStart(2, '0');
-      const f = String(Math.floor((now.getMilliseconds() / 1000) * 24)).padStart(2, '0');
-      setTimecode(`${h}:${m}:${s}:${f}`);
-    }, 1000 / 24);
-    return () => clearInterval(timer);
-  }, []);
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {
+        setIsPlaying(false);
+      });
+    }
+  }, [currentIndex]);
+
+  // Zero-rerender DOM text update for buttery smooth 60fps video playback
+  const handleTimeUpdate = () => {
+    if (!videoRef.current || !timecodeDisplayRef.current) return;
+    const current = videoRef.current.currentTime || 0;
+    const mins = String(Math.floor(current / 60)).padStart(2, '0');
+    const secs = String(Math.floor(current % 60)).padStart(2, '0');
+    const frames = String(Math.floor((current % 1) * 24)).padStart(2, '0');
+    timecodeDisplayRef.current.textContent = `00:${mins}:${secs}:${frames}`;
+  };
+
+  const handleVideoEnded = () => {
+    if (onSelectReel) {
+      onSelectReel((currentIndex + 1) % stillsList.length);
+    } else {
+      nextStill();
+    }
+  };
+
+  const togglePlayPause = () => {
+    sounds.playClick();
+    if (!videoRef.current) return;
+    if (videoRef.current.paused) {
+      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+    } else {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const toggleMute = () => {
+    sounds.playClick();
+    setIsMuted(!isMuted);
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+    }
+  };
 
   const triggerShutter = () => {
     sounds.playShutter();
@@ -131,30 +145,32 @@ export default function PhotoViewfinderCard({ onBookShoot }) {
   };
 
   const selectStill = (index) => {
-    if (index === currentIndex) return;
     sounds.playClick();
-    setCurrentIndex(index);
-    // Subtle shutter click on photo switch
+    if (onSelectReel) {
+      onSelectReel(index);
+    } else {
+      setInternalIndex(index);
+    }
     sounds.playShutter();
     setIsFlashing(true);
     setTimeout(() => setIsFlashing(false), 90);
   };
 
   const nextStill = () => {
-    selectStill((currentIndex + 1) % PHOTOSHOOT_STILLS.length);
+    selectStill((currentIndex + 1) % stillsList.length);
   };
 
   const prevStill = () => {
-    selectStill((currentIndex - 1 + PHOTOSHOOT_STILLS.length) % PHOTOSHOOT_STILLS.length);
+    selectStill((currentIndex - 1 + stillsList.length) % stillsList.length);
   };
 
   return (
     <>
-      <div className="relative w-full max-w-[420px] mx-auto select-none">
+      <div className="relative w-full max-w-[440px] mx-auto select-none">
         {/* Glow ambient background aura */}
         <div 
           className="absolute -inset-2.5 rounded-[32px] opacity-40 blur-2xl transition-colors duration-1000 pointer-events-none"
-          style={{ background: `radial-gradient(circle, ${currentStill.accentColor}33 0%, transparent 70%)` }}
+          style={{ background: `radial-gradient(circle, ${currentStill.accentColor || '#e6b980'}33 0%, transparent 70%)` }}
         />
 
         {/* Director's Viewfinder Monitor Chassis */}
@@ -170,26 +186,26 @@ export default function PhotoViewfinderCard({ onBookShoot }) {
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-red-950/80 border border-red-500/40 text-red-400">
                 <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
-                <span className="font-bold tracking-widest text-[9px]">LIVE STILLS</span>
+                <span className="font-bold tracking-widest text-[9px]">REC LIVE</span>
               </div>
-              <span className="text-neutral-400 hidden sm:inline">{timecode}</span>
+              <span ref={timecodeDisplayRef} className="text-neutral-300 font-mono text-[10px] hidden sm:inline">00:00:00:00</span>
             </div>
 
             {/* Center: Camera Model */}
             <div className="flex items-center gap-1.5 text-neutral-300 font-sans text-[11px] font-medium">
               <Camera className="w-3.5 h-3.5 text-[#e6b980]" />
-              <span className="truncate max-w-[140px] sm:max-w-none">{currentStill.camera}</span>
+              <span className="truncate max-w-[130px] sm:max-w-none">{currentStill.camera || 'RED V-Raptor 8K'}</span>
             </div>
 
-            {/* Right: Battery & Format Indicator */}
+            {/* Right: Format Indicator & Maximize */}
             <div className="flex items-center gap-2">
               <span className="text-[#e6b980] font-bold text-[9px] uppercase px-1.5 py-0.5 rounded bg-[#e6b980]/10 border border-[#e6b980]/20">
-                100MP RAW
+                4K RAW
               </span>
               <button
                 onClick={() => setIsLightboxOpen(true)}
                 className="p-1 rounded-md text-neutral-400 hover:text-white hover:bg-white/10 transition-colors"
-                title="Inspect High-Res Photo"
+                title="Fullscreen Video Playback"
               >
                 <Maximize2 className="w-3.5 h-3.5" />
               </button>
@@ -198,25 +214,24 @@ export default function PhotoViewfinderCard({ onBookShoot }) {
 
           {/* Main Viewfinder Screen Display */}
           <div className="relative aspect-[4/5] sm:aspect-[3/4] w-full overflow-hidden bg-black group">
-            {/* Photoshoot Image with Log/Graded Filter */}
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={currentStill.id}
-                src={currentStill.image}
-                alt={currentStill.title}
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ 
-                  opacity: 1, 
-                  scale: 1,
-                  filter: isRawLog 
-                    ? 'saturate(0.4) contrast(0.85) brightness(1.1) sepia(0.08)' 
-                    : 'saturate(1.15) contrast(1.08) brightness(0.96)'
-                }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.6, ease: 'easeOut' }}
-                className="w-full h-full object-cover transition-[filter] duration-500"
-              />
-            </AnimatePresence>
+            {/* High-Performance Direct Video Player */}
+            <video
+              ref={videoRef}
+              key={currentStill.video || currentStill.videoUrl || currentStill.id}
+              src={currentStill.video || currentStill.videoUrl}
+              poster={currentStill.image || currentStill.poster}
+              autoPlay
+              muted={isMuted}
+              playsInline
+              onTimeUpdate={handleTimeUpdate}
+              onEnded={handleVideoEnded}
+              className="w-full h-full object-cover transform-gpu"
+            />
+
+            {/* RAW Log / Graded Overlay (Zero shader pass on video) */}
+            {isRawLog && (
+              <div className="absolute inset-0 bg-[#dedede]/15 mix-blend-color pointer-events-none" />
+            )}
 
             {/* Real Optical Shutter Flash Overlay */}
             {isFlashing && (
@@ -240,8 +255,8 @@ export default function PhotoViewfinderCard({ onBookShoot }) {
                 <div className="border-r border-b border-white" />
                 <div className="border-r border-b border-white" />
                 <div className="border-b border-white" />
-                <div className="border-r border-white" />
-                <div className="border-r border-white" />
+                <div className="border-r border-b border-white" />
+                <div className="border-r border-b border-white" />
                 <div />
               </div>
             )}
@@ -270,7 +285,7 @@ export default function PhotoViewfinderCard({ onBookShoot }) {
                   <div className="h-2.5 w-[1.5px] bg-[#e6b980] absolute" />
                 </div>
                 <span className="text-[9px] font-mono text-[#e6b980] tracking-widest bg-black/60 px-1.5 py-0.5 rounded backdrop-blur-sm">
-                  AF-LOCK • EYE DETECT
+                  AF-LOCK • CINEMA 24FPS
                 </span>
               </motion.div>
             </div>
@@ -278,7 +293,7 @@ export default function PhotoViewfinderCard({ onBookShoot }) {
             {/* Top Overlay Badges */}
             <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-20 pointer-events-none">
               <span className="px-2.5 py-1 rounded-full bg-black/75 border border-white/15 text-[10px] font-semibold tracking-wider uppercase text-white backdrop-blur-md">
-                {currentStill.genre}
+                {currentStill.genre || 'Cinematic Film'}
               </span>
 
               {/* RAW vs Graded Badge Indicator */}
@@ -292,7 +307,7 @@ export default function PhotoViewfinderCard({ onBookShoot }) {
               <button
                 onClick={(e) => { e.stopPropagation(); prevStill(); }}
                 className="p-1.5 rounded-full bg-black/60 hover:bg-black/90 border border-white/15 text-white/80 hover:text-white transition-all backdrop-blur-sm opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0"
-                title="Previous Still"
+                title="Previous Video"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
@@ -301,7 +316,7 @@ export default function PhotoViewfinderCard({ onBookShoot }) {
               <button
                 onClick={(e) => { e.stopPropagation(); nextStill(); }}
                 className="p-1.5 rounded-full bg-black/60 hover:bg-black/90 border border-white/15 text-white/80 hover:text-white transition-all backdrop-blur-sm opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0"
-                title="Next Still"
+                title="Next Video"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -309,26 +324,52 @@ export default function PhotoViewfinderCard({ onBookShoot }) {
 
             {/* Bottom In-Screen Metadata HUD */}
             <div className="absolute bottom-3 left-3 right-3 z-20 flex flex-col gap-1.5">
-              <div className="p-2.5 rounded-xl bg-black/75 border border-white/15 backdrop-blur-md text-white">
+              <div className="p-2.5 rounded-xl bg-black/80 border border-white/15 backdrop-blur-md text-white">
                 <div className="flex items-center justify-between">
                   <h3 className="font-display font-bold text-sm tracking-tight text-white drop-shadow">
                     {currentStill.title}
                   </h3>
-                  <span className="text-[10px] text-[#e6b980] font-mono font-medium">
-                    {currentStill.badge}
-                  </span>
+                  <div className="flex items-center gap-1.5">
+                    {/* Audio Mute/Unmute */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleMute();
+                      }}
+                      className="p-1 rounded-md bg-white/10 hover:bg-white/20 text-[#e6b980] transition-colors"
+                      title={isMuted ? "Unmute Audio" : "Mute Audio"}
+                    >
+                      {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
+                    </button>
+                    {/* Play/Pause */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        togglePlayPause();
+                      }}
+                      className="p-1 rounded-md bg-white/10 hover:bg-white/20 text-white transition-colors"
+                      title={isPlaying ? "Pause Video" : "Play Video"}
+                    >
+                      {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 fill-current" />}
+                    </button>
+                    <span className="text-[10px] text-[#e6b980] font-mono font-medium ml-1">
+                      {currentStill.badge || '8K MASTER'}
+                    </span>
+                  </div>
                 </div>
                 
                 {/* Camera Exif Telemetry row */}
-                <div className="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[10px] font-mono text-neutral-300 border-t border-white/10 pt-1.5">
-                  <span className="text-white font-semibold">{currentStill.lens}</span>
-                  <span className="text-neutral-500">•</span>
-                  <span>{currentStill.settings.shutter}</span>
-                  <span className="text-neutral-500">•</span>
-                  <span className="text-[#e6b980]">{currentStill.settings.aperture}</span>
-                  <span className="text-neutral-500">•</span>
-                  <span>{currentStill.settings.iso}</span>
-                </div>
+                {currentStill.settings && (
+                  <div className="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[10px] font-mono text-neutral-300 border-t border-white/10 pt-1.5">
+                    <span className="text-white font-semibold">{currentStill.lens || 'Cooke 50mm'}</span>
+                    <span className="text-neutral-500">•</span>
+                    <span>{currentStill.settings.shutter}</span>
+                    <span className="text-neutral-500">•</span>
+                    <span className="text-[#e6b980]">{currentStill.settings.aperture}</span>
+                    <span className="text-neutral-500">•</span>
+                    <span>{currentStill.settings.iso}</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -389,7 +430,7 @@ export default function PhotoViewfinderCard({ onBookShoot }) {
               onClick={triggerShutter}
               className="group px-3 py-1.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 text-white font-mono text-[10px] font-bold tracking-wider uppercase transition-all shadow-[0_0_15px_rgba(239,68,68,0.4)] active:scale-95 flex items-center gap-1.5"
               data-cursor="SNAP"
-              title="Trigger Camera Shutter"
+              title="Trigger Cinema Shutter"
             >
               <Zap className="w-3 h-3 text-yellow-300 group-hover:scale-110 transition-transform" />
               <span>Snap #{shotCount}</span>
@@ -401,16 +442,16 @@ export default function PhotoViewfinderCard({ onBookShoot }) {
             <div className="flex items-center justify-between mb-2">
               <span className="text-[9px] font-mono text-neutral-400 uppercase tracking-widest flex items-center gap-1">
                 <Layers className="w-3 h-3 text-[#e6b980]" />
-                Shoot Contact Reel (35mm)
+                Synchronized Reels ({stillsList.length})
               </span>
               <span className="text-[9px] font-mono text-neutral-500">
-                0{currentIndex + 1} / 0{PHOTOSHOOT_STILLS.length}
+                0{currentIndex + 1} / 0{stillsList.length}
               </span>
             </div>
 
-            {/* Film Slide Thumbnails */}
-            <div className="grid grid-cols-4 gap-2">
-              {PHOTOSHOOT_STILLS.map((still, idx) => (
+            {/* Video Thumbnails Grid */}
+            <div className={`grid ${stillsList.length >= 5 ? 'grid-cols-5' : 'grid-cols-4'} gap-1.5`}>
+              {stillsList.map((still, idx) => (
                 <button
                   key={still.id}
                   onClick={() => selectStill(idx)}
@@ -421,10 +462,15 @@ export default function PhotoViewfinderCard({ onBookShoot }) {
                   }`}
                 >
                   <img
-                    src={still.image}
+                    src={still.image || still.poster}
                     alt={still.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
+                  {/* Top-left Video Badge */}
+                  <div className="absolute top-1 left-1 px-1 py-0.5 rounded bg-black/80 text-[7px] font-mono text-[#e6b980] font-bold flex items-center gap-0.5">
+                    <Play className="w-2 h-2 fill-[#e6b980]" />
+                    <span>PLAY</span>
+                  </div>
                   {/* Sprocket frame number */}
                   <span className="absolute bottom-0.5 right-1 text-[8px] font-mono font-bold text-white drop-shadow">
                     #{idx + 1}
@@ -440,7 +486,7 @@ export default function PhotoViewfinderCard({ onBookShoot }) {
           {/* Studio Guarantee Footer Banner */}
           <div className="px-4 py-2 bg-gradient-to-r from-black via-[#141414] to-black border-t border-white/[0.06] flex items-center justify-between text-[10px]">
             <span className="text-neutral-400 font-sans truncate">
-              AVSR Vision Stills Studio • 8K Cinema & 35mm
+              AVSR Vision Cinema Studio • 8K & Master Stills
             </span>
             <button
               onClick={() => {
@@ -456,7 +502,7 @@ export default function PhotoViewfinderCard({ onBookShoot }) {
         </motion.div>
       </div>
 
-      {/* High-Res Photo Lightbox Inspection Modal */}
+      {/* High-Res Video Lightbox Inspection Modal */}
       <AnimatePresence>
         {isLightboxOpen && (
           <motion.div
@@ -479,11 +525,14 @@ export default function PhotoViewfinderCard({ onBookShoot }) {
                 <X className="w-6 h-6" />
               </button>
 
-              {/* Lightbox Image */}
-              <div className="relative rounded-2xl overflow-hidden border border-[#e6b980]/40 shadow-2xl max-h-[75vh]">
-                <img
-                  src={currentStill.image}
-                  alt={currentStill.title}
+              {/* Lightbox Video Player */}
+              <div className="relative rounded-2xl overflow-hidden border border-[#e6b980]/40 shadow-2xl max-h-[75vh] w-full bg-black flex items-center justify-center">
+                <video
+                  src={currentStill.video || currentStill.videoUrl}
+                  poster={currentStill.image || currentStill.poster}
+                  controls
+                  autoPlay
+                  playsInline
                   className="w-full h-full object-contain max-h-[75vh]"
                 />
               </div>
@@ -493,9 +542,11 @@ export default function PhotoViewfinderCard({ onBookShoot }) {
                 <h4 className="font-display font-bold text-lg text-white">
                   {currentStill.title}
                 </h4>
-                <p className="text-xs text-neutral-400 mt-1 font-mono">
-                  {currentStill.camera} • {currentStill.lens} • {currentStill.settings.shutter} • {currentStill.settings.aperture} • {currentStill.settings.iso}
-                </p>
+                {currentStill.settings && (
+                  <p className="text-xs text-neutral-400 mt-1 font-mono">
+                    {currentStill.camera} • {currentStill.lens} • {currentStill.settings.shutter} • {currentStill.settings.aperture} • {currentStill.settings.iso}
+                  </p>
+                )}
                 <p className="text-[11px] text-[#e6b980] mt-0.5">
                   Location: {currentStill.location}
                 </p>

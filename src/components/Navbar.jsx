@@ -22,7 +22,6 @@ export default function Navbar({ onBookClick, onSocialClick }) {
     { name: 'About Us', href: '#about' },
     { name: 'Testimonials', href: '#testimonials' },
     { name: 'Contact', href: '#contact' },
-    { name: 'Social Connect', href: '/social-media', isSocial: true },
   ];
 
   const handleLinkClick = (e, link) => {

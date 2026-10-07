@@ -55,8 +55,8 @@ export default function SocialMediaPage({ onBackToHome }) {
       'FN:AVSR VISION (Ayuv Studios)',
       'ORG:AVSR Vision Studio',
       'TITLE:Cinematic Media & Production Studio',
-      'TEL;TYPE=CELL,VOICE:+971523406989',
-      'EMAIL;TYPE=INTERNET:contact@avsrfilms.com',
+      'TEL;TYPE=CELL,VOICE:0523406989',
+      'EMAIL;TYPE=INTERNET:ayuvbastola14@gmail.com',
       'URL:https://avsrfilms.com',
       'ADR;TYPE=WORK:;;D3 Design District, Tower 2;Dubai;;;United Arab Emirates',
       'NOTE:Premium Visual Storytelling, Commercial Films, 8K Cinema & Photography.',
@@ -79,10 +79,10 @@ export default function SocialMediaPage({ onBackToHome }) {
     {
       id: 'phone',
       title: 'Call AVSR Studio',
-      subtitle: '+971 52 340 6989',
+      subtitle: '0523406989',
       description: 'Direct Studio & Lead Producer Line',
       icon: Phone,
-      href: 'tel:+971523406989',
+      href: 'tel:0523406989',
       gradient: 'from-[#1e3a8a] via-[#2563eb] to-[#3b82f6]',
       borderHover: 'hover:border-blue-400/50',
       badge: 'Direct Call'
@@ -90,7 +90,7 @@ export default function SocialMediaPage({ onBackToHome }) {
     {
       id: 'whatsapp',
       title: 'WhatsApp Consultation',
-      subtitle: '+971 52 340 6989',
+      subtitle: '0523406989',
       description: 'Instant Project Inquiry & 24/7 Availability',
       icon: MessageCircle,
       href: 'https://wa.me/971523406989?text=Hello%20AVSR%20VISION!%20I%20would%20like%20to%20inquire%20about%20booking%20a%20commercial/photography%20project.',
@@ -113,10 +113,10 @@ export default function SocialMediaPage({ onBackToHome }) {
     {
       id: 'email',
       title: 'Email Production Studio',
-      subtitle: 'contact@avsrfilms.com',
+      subtitle: 'ayuvbastola14@gmail.com',
       description: 'Send Pitch Decks, Briefs & Enterprise Inquiries',
       icon: Mail,
-      href: 'mailto:contact@avsrfilms.com?subject=Creative%20Production%20Inquiry%20-%20AVSR%20VISION',
+      href: 'mailto:ayuvbastola14@gmail.com?subject=Creative%20Production%20Inquiry%20-%20AVSR%20VISION',
       gradient: 'from-white/[0.07] via-white/[0.04] to-white/[0.02]',
       borderHover: 'hover:border-[#e6b980]/40',
       badge: 'Official Briefs'
@@ -443,8 +443,18 @@ export default function SocialMediaPage({ onBackToHome }) {
               <Phone className="w-4 h-4 text-[#e6b980] shrink-0 mt-0.5" />
               <div>
                 <span className="block text-white font-medium">Phone & WhatsApp</span>
-                <a href="tel:+971523406989" className="text-[11px] text-[#e6b980] hover:underline font-mono">
-                  +971 52 340 6989
+                <a href="tel:0523406989" className="text-[11px] text-[#e6b980] hover:underline font-mono">
+                  0523406989 (+971 52 340 6989)
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-2.5">
+              <Mail className="w-4 h-4 text-[#e6b980] shrink-0 mt-0.5" />
+              <div>
+                <span className="block text-white font-medium">Direct Email</span>
+                <a href="mailto:ayuvbastola14@gmail.com" className="text-[11px] text-[#e6b980] hover:underline font-mono">
+                  ayuvbastola14@gmail.com
                 </a>
               </div>
             </div>
