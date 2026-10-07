@@ -140,7 +140,7 @@ export default function Footer({ onSocialClick }) {
               <li><a href="#portfolio" className="hover:text-white transition-colors">Luxury Weddings</a></li>
               <li><a href="#portfolio" className="hover:text-white transition-colors">Drone & FPV Reel</a></li>
               <li><a href="#about" className="hover:text-white transition-colors">Our Philosophy</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Pricing Calculator</a></li>
+              <li><a href="#services" className="hover:text-white transition-colors">Production Services</a></li>
               <li>
                 <a
                   href="/social-media"

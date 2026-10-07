@@ -119,8 +119,8 @@ export default function App() {
         {/* Featured Filterable Masonry / Grid Portfolio */}
         <PortfolioGrid onSelectProject={(project) => setActiveProject(project)} />
 
-        {/* Services & Live Interactive Pricing Packages */}
-        <ServicesPricing onSelectPackage={handleSelectPackage} />
+        {/* Services & Production Capabilities */}
+        <ServicesPricing />
 
         {/* About, Philosophy, The Crew & BTS Gallery */}
         <AboutSection />

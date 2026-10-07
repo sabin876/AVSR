@@ -50,10 +50,10 @@ export default function ContactForm({ initialPackageData }) {
   ];
 
   const budgetTiers = [
-    { label: '$3,500 – $6,000', desc: 'Boutique single-day shoots & portraits' },
-    { label: '$6,000 – $12,000', desc: 'Signature commercial campaigns & weddings' },
-    { label: '$12,000 – $25,000', desc: 'Multi-day productions & heavy aerials' },
-    { label: '$25,000+ Masterpiece', desc: 'Full cinema crew, global travel & feature scale' },
+    { label: 'Boutique Project', desc: 'Single-day shoots, editorial portraits & short reels' },
+    { label: 'Signature Campaign', desc: 'Commercial brand films, luxury weddings & full narrative' },
+    { label: 'Enterprise Production', desc: 'Multi-day productions, heavy aerials & global logistics' },
+    { label: 'Bespoke / Custom Scope', desc: 'Custom tailored scope discussed during consultation' },
   ];
 
   const validateStep = (step) => {
@@ -341,7 +341,7 @@ export default function ContactForm({ initialPackageData }) {
                   >
                     <div>
                       <h3 className="font-display text-xl font-bold text-white mb-2">
-                        What is your anticipated production investment?
+                        What is your anticipated production scale?
                       </h3>
                       <p className="text-xs text-neutral-400">
                         This helps us tailor camera packages, crew size, and aerial permissions.

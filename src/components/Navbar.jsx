@@ -18,7 +18,7 @@ export default function Navbar({ onBookClick, onSocialClick }) {
 
   const navLinks = [
     { name: 'Work', href: '#portfolio' },
-    { name: 'Services & Pricing', href: '#services' },
+    { name: 'Services', href: '#services' },
     { name: 'About Us', href: '#about' },
     { name: 'Testimonials', href: '#testimonials' },
     { name: 'Contact', href: '#contact' },

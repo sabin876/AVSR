@@ -1,37 +1,11 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
-  Video, Camera, Plane, Sliders, Check, ArrowRight,
-  Sparkles, Clock, ShieldCheck, Zap, Plus, DollarSign
+  Video, Camera, Plane, Sliders, Check, ArrowRight, Sparkles
 } from 'lucide-react';
-import { SERVICES_LIST, PRICING_TIERS, PRICING_ADDONS } from '../data/servicesData';
+import { SERVICES_LIST } from '../data/servicesData';
 import { sounds } from '../utils/soundEffects';
 
-export default function ServicesPricing({ onSelectPackage }) {
-  const [selectedTierId, setSelectedTierId] = useState('signature');
-  const [selectedAddons, setSelectedAddons] = useState(['fpv']);
-  const [activeServiceTab, setActiveServiceTab] = useState('videography');
-
-  const selectedTier = PRICING_TIERS.find((t) => t.id === selectedTierId) || PRICING_TIERS[1];
-
-  const toggleAddon = (addonId) => {
-    sounds.playClick();
-    if (selectedAddons.includes(addonId)) {
-      setSelectedAddons(selectedAddons.filter((id) => id !== addonId));
-    } else {
-      setSelectedAddons([...selectedAddons, addonId]);
-    }
-  };
-
-  const calculateTotal = () => {
-    let total = selectedTier.price;
-    selectedAddons.forEach((addonId) => {
-      const addon = PRICING_ADDONS.find((a) => a.id === addonId);
-      if (addon) total += addon.price;
-    });
-    return total;
-  };
-
+export default function ServicesPricing() {
   const getServiceIcon = (iconName) => {
     switch (iconName) {
       case 'Video':
@@ -47,15 +21,8 @@ export default function ServicesPricing({ onSelectPackage }) {
     }
   };
 
-  const handleApplyToBooking = () => {
+  const handleInquireClick = () => {
     sounds.playShutter();
-    if (onSelectPackage) {
-      onSelectPackage({
-        tier: selectedTier.name,
-        price: calculateTotal(),
-        addons: selectedAddons.map((id) => PRICING_ADDONS.find((a) => a.id === id)?.name).filter(Boolean)
-      });
-    }
     const contactElem = document.querySelector('#contact');
     if (contactElem) {
       contactElem.scrollIntoView({ behavior: 'smooth' });
@@ -69,19 +36,19 @@ export default function ServicesPricing({ onSelectPackage }) {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-semibold text-[#e6b980] mb-3">
             <span className="w-6 h-[1.5px] bg-[#e6b980]" />
-            <span>Offerings & Investment</span>
+            <span>Production Capabilities</span>
             <span className="w-6 h-[1.5px] bg-[#e6b980]" />
           </div>
           <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-white tracking-tight uppercase">
-            Services & Production Packages
+            Services & Production Capabilities
           </h2>
           <p className="mt-4 text-neutral-400 text-sm sm:text-base font-light">
-            We operate end-to-end cinema production from concept and heavy-lift flight to master color science. Choose an all-inclusive tier or customize your deliverables.
+            We operate end-to-end cinema production from creative concept and heavy-lift flight to master color science. Tailored for commercial, fashion, and heirloom stories.
           </p>
         </div>
 
         {/* 4 Pillars Breakdown (Interactive Cards) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {SERVICES_LIST.map((service) => (
             <motion.div
               key={service.id}
@@ -117,11 +84,11 @@ export default function ServicesPricing({ onSelectPackage }) {
                 </div>
               </div>
 
-              {/* Card Footer */}
+              {/* Card Footer without public pricing */}
               <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs">
                 <div>
-                  <span className="text-[10px] text-neutral-400 uppercase tracking-wider block">Starts at</span>
-                  <span className="font-display font-bold text-white text-base">{service.startingPrice}</span>
+                  <span className="text-[10px] text-neutral-400 uppercase tracking-wider block">Scope</span>
+                  <span className="font-medium text-white text-xs">Custom Production</span>
                 </div>
                 <div className="text-right">
                   <span className="text-[10px] text-neutral-400 uppercase tracking-wider block">Turnaround</span>
@@ -132,153 +99,28 @@ export default function ServicesPricing({ onSelectPackage }) {
           ))}
         </div>
 
-        {/* Interactive Pricing Estimator & Package Selector */}
-        <div className="rounded-3xl bg-gradient-to-b from-[#141414] to-[#0c0c0c] border border-white/10 p-6 sm:p-10 shadow-2xl relative overflow-hidden">
-          {/* Subtle Ambient Glow in Corner */}
+        {/* Bespoke Production Inquiries CTA Card */}
+        <div className="rounded-3xl bg-gradient-to-b from-[#141414] to-[#0c0c0c] border border-white/10 p-8 sm:p-12 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#e6b980]/5 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="max-w-2xl mb-10">
+          <div className="max-w-2xl relative z-10">
             <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#e6b980] font-bold">
-              Interactive Estimator
+              Bespoke Productions
             </span>
             <h3 className="font-display text-2xl sm:text-4xl font-extrabold text-white mt-1">
-              Select Your Production Tier
+              Have a Project in Mind?
             </h3>
-            <p className="text-xs sm:text-sm text-neutral-400 mt-2 font-light">
-              Toggle tiers and modular add-ons below to preview the exact investment quote for your campaign or event.
+            <p className="text-xs sm:text-sm text-neutral-400 mt-2 font-light leading-relaxed">
+              Every brand campaign, cinematic narrative, and high-fashion editorial requires custom optics, crew scaling, and post-production workflows. Connect with our team to discuss your scope and receive a tailored proposal.
             </p>
           </div>
-
-          {/* Pricing Tiers Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
-            {PRICING_TIERS.map((tier) => {
-              const isSelected = selectedTierId === tier.id;
-              return (
-                <div
-                  key={tier.id}
-                  onClick={() => {
-                    sounds.playClick();
-                    setSelectedTierId(tier.id);
-                  }}
-                  className={`relative p-6 sm:p-8 rounded-2xl cursor-pointer transition-all duration-300 flex flex-col justify-between ${
-                    isSelected
-                      ? 'bg-[#1a1a1a] border-2 border-[#e6b980] shadow-[0_0_35px_rgba(230,185,128,0.2)]'
-                      : 'bg-white/[0.02] border border-white/10 hover:border-white/20 hover:bg-white/[0.04]'
-                  }`}
-                  data-cursor="SELECT"
-                >
-                  {/* Badge */}
-                  {tier.popular && (
-                    <div className="absolute -top-3 left-6 px-3 py-1 rounded-full bg-[#e6b980] text-black text-[10px] font-bold uppercase tracking-wider shadow-lg">
-                      {tier.badge}
-                    </div>
-                  )}
-
-                  <div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-mono uppercase tracking-wider text-neutral-400">
-                        {tier.name}
-                      </span>
-                      {isSelected && (
-                        <span className="w-5 h-5 rounded-full bg-[#e6b980] text-black flex items-center justify-center">
-                          <Check className="w-3.5 h-3.5" />
-                        </span>
-                      )}
-                    </div>
-
-                    <div className="mt-4 flex items-baseline gap-1">
-                      <span className="font-display text-3xl sm:text-4xl font-black text-white">
-                        {tier.priceLabel}
-                      </span>
-                      <span className="text-xs text-neutral-400 font-mono">/ base project</span>
-                    </div>
-
-                    <p className="mt-3 text-xs text-neutral-300 font-light leading-relaxed">
-                      {tier.description}
-                    </p>
-
-                    <div className="mt-6 space-y-2.5 pt-6 border-t border-white/10">
-                      {tier.features.map((feat, idx) => (
-                        <div key={idx} className="flex items-start gap-2 text-xs text-neutral-300">
-                          <Check className="w-3.5 h-3.5 text-[#e6b980] shrink-0 mt-0.5" />
-                          <span>{feat}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="mt-8 pt-4 border-t border-white/5">
-                    <span className="text-[11px] text-neutral-400 font-light italic">
-                      Best for: {tier.recommendedFor}
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Optional Add-Ons Selection */}
-          <div className="p-6 rounded-2xl bg-black/40 border border-white/5 mb-8">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-neutral-300 mb-4 flex items-center gap-2">
-              <Plus className="w-4 h-4 text-[#e6b980]" />
-              <span>Available Production Add-Ons & Acceleration</span>
-            </h4>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {PRICING_ADDONS.map((addon) => {
-                const checked = selectedAddons.includes(addon.id);
-                return (
-                  <div
-                    key={addon.id}
-                    onClick={() => toggleAddon(addon.id)}
-                    className={`p-3.5 rounded-xl border cursor-pointer flex items-center justify-between text-xs transition-all ${
-                      checked
-                        ? 'bg-[#e6b980]/10 border-[#e6b980]/50 text-white'
-                        : 'bg-white/[0.02] border-white/5 text-neutral-400 hover:text-white hover:border-white/10'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <div
-                        className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
-                          checked ? 'bg-[#e6b980] border-[#e6b980] text-black' : 'border-neutral-600'
-                        }`}
-                      >
-                        {checked && <Check className="w-3 h-3" />}
-                      </div>
-                      <span className="font-medium">{addon.name}</span>
-                    </div>
-                    <span className="font-mono text-[#e6b980] shrink-0">+${addon.price}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Live Quote Summary & Apply to Booking */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 p-6 rounded-2xl bg-[#1a1a1a] border border-[#e6b980]/30 shadow-xl">
-            <div>
-              <span className="text-xs uppercase tracking-wider text-neutral-400 font-mono block">
-                Estimated Project Investment
-              </span>
-              <div className="flex items-baseline gap-2 mt-1">
-                <span className="font-display text-3xl sm:text-4xl font-extrabold text-white">
-                  ${calculateTotal().toLocaleString()}
-                </span>
-                <span className="text-xs text-[#e6b980] font-mono">
-                  ({selectedTier.name} + {selectedAddons.length} Add-ons)
-                </span>
-              </div>
-            </div>
-
-            <button
-              onClick={handleApplyToBooking}
-              className="w-full sm:w-auto px-8 py-4 rounded-full text-xs font-bold uppercase tracking-[0.18em] text-black bg-[#e6b980] hover:bg-[#f59e0b] transition-all shadow-[0_0_25px_rgba(230,185,128,0.4)] flex items-center justify-center gap-3 active:scale-95"
-              data-cursor="BOOK"
-            >
-              <span>Lock In & Proceed to Booking</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
+          <button
+            onClick={handleInquireClick}
+            className="w-full md:w-auto px-8 py-4 rounded-full text-xs font-bold uppercase tracking-[0.18em] text-black bg-[#e6b980] hover:bg-[#f59e0b] transition-all shadow-[0_0_25px_rgba(230,185,128,0.4)] hover:shadow-[0_0_35px_rgba(230,185,128,0.6)] flex items-center justify-center gap-3 shrink-0 active:scale-95 relative z-10"
+            data-cursor="INQUIRE"
+          >
+            <span>Inquire Project</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
       </div>
     </section>

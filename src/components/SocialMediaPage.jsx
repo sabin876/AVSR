@@ -102,7 +102,7 @@ export default function SocialMediaPage({ onBackToHome }) {
       id: 'website',
       title: 'Visit Official Website',
       subtitle: 'avsrfilms.com',
-      description: 'Explore 8K Showreels, Film Works & Live Pricing',
+      description: 'Explore 8K Showreels, Film Works & Capabilities',
       icon: Globe,
       onClick: onBackToHome,
       href: '#',

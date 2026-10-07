@@ -13,7 +13,7 @@ export const SERVICES_LIST = [
       'Social media aspect ratios (9:16, 1:1, 16:9)',
       'Professional audio & wireless lavalier setup'
     ],
-    startingPrice: '$4,500',
+    startingPrice: 'Custom Scope',
     turnaround: '10 - 14 Business Days'
   },
   {
@@ -30,7 +30,7 @@ export const SERVICES_LIST = [
       'Commercial usage licensing included',
       'Archival print-ready TIFF & web formats'
     ],
-    startingPrice: '$3,200',
+    startingPrice: 'Custom Scope',
     turnaround: '5 - 7 Business Days'
   },
   {
@@ -47,7 +47,7 @@ export const SERVICES_LIST = [
       'Fully insured FAA Part 107 commercial pilots',
       'Airspace authorization & permit acquisition'
     ],
-    startingPrice: '$2,800',
+    startingPrice: 'Custom Scope',
     turnaround: '3 - 5 Business Days'
   },
   {
@@ -64,7 +64,7 @@ export const SERVICES_LIST = [
       'Visual effects, object removal & title design',
       'Uncompressed master archives'
     ],
-    startingPrice: '$1,900',
+    startingPrice: 'Custom Scope',
     turnaround: '4 - 7 Business Days'
   }
 ];
