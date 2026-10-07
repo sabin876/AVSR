@@ -121,7 +121,7 @@ export default function ContactForm({ initialPackageData }) {
   const handleWhatsAppDirect = () => {
     sounds.playClick();
     const text = `Hello AYUV Studios! I would like to inquire about booking a ${formData.eventType} project on ${formData.date || 'TBD'} in ${formData.location || 'TBD'}. Budget: ${formData.budget}. Name: ${formData.fullName || 'Prospective Client'}.`;
-    window.open(`https://wa.me/1234567890?text=${encodeURIComponent(text)}`, '_blank');
+    window.open(`https://wa.me/971523406989?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (
@@ -419,7 +419,7 @@ export default function ContactForm({ initialPackageData }) {
                           type="tel"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          placeholder="+1 (555) 000-0000"
+                          placeholder="+971 52 340 6989"
                           className="w-full px-4 py-2.5 bg-white/[0.03] border border-white/10 rounded-xl text-xs text-white focus:outline-none focus:border-[#e6b980]"
                         />
                       </div>

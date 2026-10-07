@@ -10,7 +10,7 @@ export default function WhatsAppButton() {
     const message = encodeURIComponent(
       "Hello AYUV Studios! I'm interested in commissioning a photography/videography project. Could you share your availability?"
     );
-    window.open(`https://wa.me/1234567890?text=${message}`, '_blank');
+    window.open(`https://wa.me/971523406989?text=${message}`, '_blank');
   };
 
   return (
@@ -19,7 +19,7 @@ export default function WhatsAppButton() {
       {showTooltip && (
         <div className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#141414] border border-[#25D366]/40 text-xs text-white shadow-2xl backdrop-blur-md animate-fade-in">
           <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
-          <span>Quick Chat with Lead Producer</span>
+          <span>WhatsApp (+971 52 340 6989)</span>
           <button
             onClick={(e) => {
               e.stopPropagation();

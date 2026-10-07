@@ -98,6 +98,19 @@ export default function Footer() {
                   <circle cx="4" cy="4" r="2" />
                 </svg>
               </a>
+
+              {/* WhatsApp */}
+              <a
+                href="https://wa.me/971523406989"
+                target="_blank"
+                rel="noreferrer"
+                className="p-2.5 rounded-full bg-white/[0.03] border border-white/5 hover:border-[#25D366] hover:text-[#25D366] transition-colors"
+                title="Chat on WhatsApp (+971 52 340 6989)"
+              >
+                <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                </svg>
+              </a>
             </div>
           </div>
 
