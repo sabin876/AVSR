@@ -4,7 +4,7 @@ import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { sounds } from '../utils/soundEffects';
 import logoImg from '../assets/logo.png';
 
-export default function Navbar({ onBookClick, onCategorySelect }) {
+export default function Navbar({ onBookClick, onSocialClick }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -22,13 +22,25 @@ export default function Navbar({ onBookClick, onCategorySelect }) {
     { name: 'About Us', href: '#about' },
     { name: 'Testimonials', href: '#testimonials' },
     { name: 'Contact', href: '#contact' },
+    { name: 'Social Connect', href: '/social-media', isSocial: true },
   ];
 
-  const handleLinkClick = (e, href) => {
+  const handleLinkClick = (e, link) => {
     e.preventDefault();
     sounds.playClick();
     setMobileMenuOpen(false);
-    const target = document.querySelector(href);
+
+    if (link.isSocial || link.href === '/social-media') {
+      if (onSocialClick) {
+        onSocialClick();
+      } else {
+        window.history.pushState({}, '', '/social-media');
+        window.dispatchEvent(new PopStateEvent('popstate'));
+      }
+      return;
+    }
+
+    const target = document.querySelector(link.href);
     if (target) {
       target.scrollIntoView({ behavior: 'smooth' });
     }
@@ -69,7 +81,7 @@ export default function Navbar({ onBookClick, onCategorySelect }) {
             <a
               key={link.name}
               href={link.href}
-              onClick={(e) => handleLinkClick(e, link.href)}
+              onClick={(e) => handleLinkClick(e, link)}
               className="relative py-1 hover:text-[#e6b980] transition-colors group"
               data-cursor="GO"
             >
@@ -130,7 +142,7 @@ export default function Navbar({ onBookClick, onCategorySelect }) {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.05 }}
                   href={link.href}
-                  onClick={(e) => handleLinkClick(e, link.href)}
+                  onClick={(e) => handleLinkClick(e, link)}
                   className="text-neutral-300 hover:text-[#e6b980] py-2 border-b border-white/[0.04] flex items-center justify-between"
                 >
                   <span>{link.name}</span>

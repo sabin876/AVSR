@@ -2,7 +2,7 @@ import { ArrowUp, Globe, Sparkles } from 'lucide-react';
 import { sounds } from '../utils/soundEffects';
 import logoImg from '../assets/logo.png';
 
-export default function Footer() {
+export default function Footer({ onSocialClick }) {
   const scrollToTop = () => {
     sounds.playWhoosh();
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -125,6 +125,25 @@ export default function Footer() {
               <li><a href="#portfolio" className="hover:text-white transition-colors">Drone & FPV Reel</a></li>
               <li><a href="#about" className="hover:text-white transition-colors">Our Philosophy</a></li>
               <li><a href="#services" className="hover:text-white transition-colors">Pricing Calculator</a></li>
+              <li>
+                <a
+                  href="/social-media"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    sounds.playClick();
+                    if (onSocialClick) {
+                      onSocialClick();
+                    } else {
+                      window.history.pushState({}, '', '/social-media');
+                      window.dispatchEvent(new PopStateEvent('popstate'));
+                    }
+                  }}
+                  className="text-[#e6b980] hover:underline font-semibold flex items-center gap-1"
+                >
+                  <span>Social Media & Digital Card</span>
+                  <span className="text-[10px]">↗</span>
+                </a>
+              </li>
             </ul>
           </div>
 

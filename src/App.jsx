@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import PortfolioGrid from './components/PortfolioGrid';
@@ -12,10 +12,53 @@ import CustomCursor from './components/CustomCursor';
 import ScrollProgress from './components/ScrollProgress';
 import WhatsAppButton from './components/WhatsAppButton';
 import CinematicBackground from './components/CinematicBackground';
+import SocialMediaPage from './components/SocialMediaPage';
 
 export default function App() {
   const [activeProject, setActiveProject] = useState(null);
   const [selectedPackageData, setSelectedPackageData] = useState(null);
+
+  const checkIsSocialRoute = () => {
+    if (typeof window === 'undefined') return false;
+    const path = window.location.pathname.toLowerCase();
+    const hash = window.location.hash.toLowerCase();
+    return (
+      path === '/social-media' ||
+      path === '/social-media/' ||
+      path === '/social' ||
+      path === '/social/' ||
+      hash === '#social-media' ||
+      hash === '#social'
+    );
+  };
+
+  const [isSocialPage, setIsSocialPage] = useState(checkIsSocialRoute);
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setIsSocialPage(checkIsSocialRoute());
+    };
+
+    window.addEventListener('popstate', handleRouteChange);
+    window.addEventListener('hashchange', handleRouteChange);
+
+    return () => {
+      window.removeEventListener('popstate', handleRouteChange);
+      window.removeEventListener('hashchange', handleRouteChange);
+    };
+  }, []);
+
+  const handleOpenSocialPage = () => {
+    window.history.pushState({}, '', '/social-media');
+    setIsSocialPage(true);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleBackToHome = () => {
+    window.history.pushState({}, '', '/');
+    setIsSocialPage(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handleSelectPackage = (packageData) => {
     setSelectedPackageData(packageData);
@@ -38,12 +81,22 @@ export default function App() {
     }
   };
 
+  // If viewing Social Media biolink & digital contact card
+  if (isSocialPage) {
+    return (
+      <>
+        <CustomCursor />
+        <SocialMediaPage onBackToHome={handleBackToHome} />
+      </>
+    );
+  }
+
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] text-[#f5f5f5] selection:bg-[#e6b980]/30 selection:text-white">
       {/* Film Grain Overlay */}
       <div className="film-grain" />
 
-      {/* Cinematic Videography & Photo Shoot Background (Bokeh, Anamorphic flares, Camera Viewfinder HUD) */}
+      {/* Cinematic Videography & Photo Shoot Background */}
       <CinematicBackground />
 
       {/* 35mm Film Sprockets Margin Rails */}
@@ -57,7 +110,10 @@ export default function App() {
       <ScrollProgress />
 
       {/* Fixed Glassmorphic Navigation */}
-      <Navbar onBookClick={handleBookFromHeroOrModal} />
+      <Navbar
+        onBookClick={handleBookFromHeroOrModal}
+        onSocialClick={handleOpenSocialPage}
+      />
 
       {/* Main Content */}
       <main>
@@ -84,7 +140,7 @@ export default function App() {
       </main>
 
       {/* Studio Footer */}
-      <Footer />
+      <Footer onSocialClick={handleOpenSocialPage} />
 
       {/* Floating Direct WhatsApp Connect */}
       <WhatsAppButton />
