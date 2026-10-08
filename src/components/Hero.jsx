@@ -4,7 +4,7 @@ import { Play, Pause, Volume2, VolumeX, ChevronRight, Sparkles, ArrowUpRight, Ex
 import { HERO_REELS } from '../data/portfolioData';
 import { sounds } from '../utils/soundEffects';
 import logoImg from '../assets/logo.png';
-import beVideo from '../assets/be.mp4';
+import masterVideo from '../assets/IMG_5914.MP4';
 import cricketVideo from '../assets/cricket.mp4';
 import PhotoViewfinderCard from './PhotoViewfinderCard';
 
@@ -18,7 +18,7 @@ export default function Hero({ onExploreWork, onBookShoot }) {
   
   const getReelVideo = (reel) => {
     if (reel?.id === 'reel-cricket') return cricketVideo;
-    return beVideo;
+    return masterVideo;
   };
 
   const [videoSrc, setVideoSrc] = useState(getReelVideo(activeReel));
@@ -39,9 +39,9 @@ export default function Hero({ onExploreWork, onBookShoot }) {
   }, [videoSrc, activeReelIndex, isMuted]);
 
   const handleVideoError = () => {
-    // If asset import somehow fails, fallback to public path or imported video
-    if (videoSrc !== beVideo) {
-      setVideoSrc(beVideo);
+    // If a video fails to play (e.g. HEVC codec unsupported in browser), fallback to universal H.264 cricketVideo
+    if (videoSrc !== cricketVideo) {
+      setVideoSrc(cricketVideo);
     }
   };
 
@@ -223,7 +223,7 @@ export default function Hero({ onExploreWork, onBookShoot }) {
               <div className="px-3.5 py-1.5 rounded-xl bg-white/10 border border-[#e6b980]/40 text-white shadow-[0_0_20px_rgba(230,185,128,0.2)] flex items-center gap-2 text-xs font-mono">
                 <span className="w-2 h-2 rounded-full bg-[#e6b980] animate-pulse" />
                 <span className="text-[#e6b980] font-bold">ACTIVE REEL:</span>
-                <span className="text-neutral-200">{activeReel?.fileLabel || 'Be.MP4'} ({activeReel?.badge || '8K Cinema Master'})</span>
+                <span className="text-neutral-200">{activeReel?.fileLabel || 'IMG_5914.mp4'} ({activeReel?.badge || '8K Cinema Master'})</span>
               </div>
             </motion.div>
           </div>

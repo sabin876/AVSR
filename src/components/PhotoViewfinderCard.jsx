@@ -13,37 +13,43 @@ import {
   Film
 } from 'lucide-react';
 import { sounds } from '../utils/soundEffects';
-import beVideo from '../assets/be.mp4';
+import masterVideo from '../assets/IMG_5914.MP4';
+import cricketVideo from '../assets/cricket.mp4';
 
 const MASTER_REEL = {
-  id: 'reel-be',
-  title: 'AVSR Master Reel (Be.MP4)',
-  fileLabel: 'Be.MP4',
-  subtitle: 'Signature Narrative & Commercial Film',
-  genre: '8K Master Cinema Reel',
-  badge: 'Be.MP4 • 8K RAW',
-  camera: 'RED V-Raptor 8K VV',
-  lens: 'Cooke 50mm Anamorphic /i',
+  id: 'reel-cricket',
+  title: 'Cricket Commercial Reel (cricket.mp4)',
+  fileLabel: 'cricket.mp4',
+  subtitle: 'High Impact Action & Sports Cinematography',
+  genre: 'Action & Sports Reel',
+  badge: 'cricket.mp4 • 4K High Speed',
+  camera: 'ARRI Alexa Mini LF',
+  lens: 'ARRI Signature Prime 35mm',
   settings: {
-    shutter: '1/48s',
-    aperture: 'T2.0',
-    iso: 'ISO 800',
+    shutter: '1/250s',
+    aperture: 'T1.8',
+    iso: 'ISO 1250',
     kelvin: '5600K',
-    format: '8K DCI RAW'
+    format: '4K ProRes 4444 XQ'
   },
-  location: 'AVSR Vision Studio',
-  video: beVideo,
-  videoUrl: beVideo,
+  location: 'Cricket Arena Studio',
+  video: cricketVideo,
+  videoUrl: cricketVideo,
   poster: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1920&q=80',
-  accentColor: '#e6b980'
+  accentColor: '#10b981'
 };
 
-export default function PhotoViewfinderCard() {
-  const reel = MASTER_REEL;
+export default function PhotoViewfinderCard({ onBookShoot, activeReelIndex = 0, onSelectReel, reels = [] }) {
+  const reel = (reels && reels[activeReelIndex]) || MASTER_REEL;
   const videoRef = useRef(null);
   const timecodeRef = useRef(null);
 
-  const [videoSrc, setVideoSrc] = useState(beVideo);
+  const getReelVideo = (r) => {
+    if (r?.id === 'reel-cricket') return cricketVideo;
+    return masterVideo;
+  };
+
+  const [videoSrc, setVideoSrc] = useState(getReelVideo(reel));
 
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
@@ -52,16 +58,21 @@ export default function PhotoViewfinderCard() {
   const [isRawLog, setIsRawLog] = useState(false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
+  useEffect(() => {
+    const current = getReelVideo(reel);
+    setVideoSrc(current);
+  }, [activeReelIndex, reel]);
+
   const handleVideoError = () => {
-    if (videoSrc !== FALLBACK_VIDEO) {
-      setVideoSrc(FALLBACK_VIDEO);
+    if (videoSrc !== cricketVideo) {
+      setVideoSrc(cricketVideo);
     }
   };
 
-  // Guarantee autoplay & loop on mount
+  // Guarantee autoplay & loop on mount and video changes
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.muted = true;
+      videoRef.current.muted = isMuted;
       videoRef.current.loop = true;
       videoRef.current.play().then(() => {
         setIsPlaying(true);
@@ -69,7 +80,7 @@ export default function PhotoViewfinderCard() {
         setIsPlaying(false);
       });
     }
-  }, []);
+  }, [videoSrc, isMuted]);
 
   // Live SMPTE timecode ticker without re-rendering React component
   const handleTimeUpdate = () => {
@@ -240,7 +251,7 @@ export default function PhotoViewfinderCard() {
             {/* Top Reel Badge */}
             <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-20 pointer-events-none">
               <span className="px-2.5 py-1 rounded-full bg-black/80 border border-white/20 text-[10px] font-bold tracking-wider uppercase text-white backdrop-blur-md">
-                IMG_5914.mp4
+                {reel?.fileLabel || 'REEL'}
               </span>
               <span className="px-2 py-0.5 rounded bg-black/75 border border-[#e6b980]/30 text-[9px] font-mono font-bold text-[#e6b980] backdrop-blur-md">
                 CONTINUOUS LOOP
@@ -377,7 +388,7 @@ export default function PhotoViewfinderCard() {
 
               <div className="relative rounded-2xl overflow-hidden border border-[#e6b980]/40 shadow-2xl max-h-[75vh] w-full bg-black flex items-center justify-center">
                 <video
-                  src={reel.video || reel.videoUrl}
+                  src={videoSrc}
                   poster={reel.poster}
                   controls
                   autoPlay

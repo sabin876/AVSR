@@ -9,28 +9,6 @@ export const PORTFOLIO_CATEGORIES = [
 
 export const HERO_REELS = [
   {
-    id: 'reel-be',
-    title: 'AVSR Master Reel (be.mp4)',
-    fileLabel: 'be.mp4',
-    subtitle: 'Signature Narrative & Commercial Cinema Film',
-    videoUrl: '/videos/be.mp4',
-    video: '/videos/be.mp4',
-    stats: '8K Master • Directed by AVSR',
-    genre: 'Master Cinema Reel',
-    badge: 'be.mp4 • 8K Master',
-    camera: 'RED V-Raptor 8K VV',
-    lens: 'Cooke 50mm Anamorphic /i',
-    settings: {
-      shutter: '1/48s',
-      aperture: 'T2.0',
-      iso: 'ISO 800',
-      kelvin: '5600K',
-      format: '8K DCI RAW'
-    },
-    location: 'AVSR Vision Studio',
-    accentColor: '#e6b980'
-  },
-  {
     id: 'reel-cricket',
     title: 'Cricket Commercial Reel (cricket.mp4)',
     fileLabel: 'cricket.mp4',
@@ -51,14 +29,36 @@ export const HERO_REELS = [
     },
     location: 'Cricket Arena Studio',
     accentColor: '#10b981'
+  },
+  {
+    id: 'reel-img5914',
+    title: 'AVSR Master Reel (IMG_5914)',
+    fileLabel: 'IMG_5914.mp4',
+    subtitle: 'Signature Narrative & Commercial Cinema Film',
+    videoUrl: '/videos/IMG_5914.mp4',
+    video: '/videos/IMG_5914.mp4',
+    stats: '8K Master • Directed by AVSR',
+    genre: 'Master Cinema Reel',
+    badge: 'IMG_5914 • 8K Master',
+    camera: 'RED V-Raptor 8K VV',
+    lens: 'Cooke 50mm Anamorphic /i',
+    settings: {
+      shutter: '1/48s',
+      aperture: 'T2.0',
+      iso: 'ISO 800',
+      kelvin: '5600K',
+      format: '8K DCI RAW'
+    },
+    location: 'AVSR Vision Studio',
+    accentColor: '#e6b980'
   }
 ];
 
 export const PORTFOLIO_PROJECTS = [
   {
     id: 'avsr-master-reel',
-    title: 'AVSR Signature Master Reel (be.mp4)',
-    fileLabel: 'be.mp4',
+    title: 'AVSR Signature Master Reel (IMG_5914)',
+    fileLabel: 'IMG_5914.mp4',
     client: 'AVSR Vision Studio',
     category: 'cinematic',
     categoryLabel: 'Cinematic Films',
@@ -67,8 +67,8 @@ export const PORTFOLIO_PROJECTS = [
     badge: '8K RAW Master',
     aspectRatio: 'aspect-[16/9]',
     featured: true,
-    hoverVideo: '/videos/be.mp4',
-    videoUrl: '/videos/be.mp4',
+    hoverVideo: '/videos/IMG_5914.mp4',
+    videoUrl: '/videos/IMG_5914.mp4',
     cameraGear: 'RED V-Raptor 8K VV + Cooke 50mm Anamorphic',
     format: '8K DCI RAW • 24fps • 2.39:1',
     runtime: '03:10',
