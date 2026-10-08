@@ -1,28 +1,33 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Sparkles, Filter, Grid, LayoutGrid, Search, Eye, Camera, ArrowUpRight } from 'lucide-react';
+import { Play, Sparkles, Grid, LayoutGrid, Search, Camera, ArrowUpRight } from 'lucide-react';
 import { PORTFOLIO_CATEGORIES, PORTFOLIO_PROJECTS } from '../data/portfolioData';
 import { sounds } from '../utils/soundEffects';
 
 function ProjectCard({ project, onSelect, isMasonry }) {
-  const [isHovered, setIsHovered] = useState(false);
   const videoRef = useRef(null);
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-    sounds.playWhoosh();
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play().catch(() => {});
-    }
-  };
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    if (videoRef.current) {
-      videoRef.current.pause();
-    }
-  };
+    // Autoplay when card enters viewport and pause when out of view for optimal performance
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [project.hoverVideo]);
 
   return (
     <motion.div
@@ -35,54 +40,42 @@ function ProjectCard({ project, onSelect, isMasonry }) {
         sounds.playShutter();
         onSelect(project);
       }}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       className={`group relative rounded-2xl overflow-hidden cursor-pointer bg-[#121212] border border-white/[0.08] hover:border-[#e6b980]/50 transition-all duration-500 shadow-xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.9)] ${
         isMasonry ? project.aspectRatio : 'aspect-[16/10]'
       }`}
       data-cursor="PLAY"
     >
-      {/* Base Still Image */}
-      <img
-        src={project.heroImage}
-        alt={project.title}
-        loading="lazy"
-        className={`w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${
-          isHovered ? 'opacity-0' : 'opacity-100'
-        }`}
-      />
-
-      {/* Hover-Triggered Video Preview */}
+      {/* Background Auto-Playing Card Video */}
       <video
         ref={videoRef}
         src={project.hoverVideo}
+        autoPlay
         muted
         loop
         playsInline
-        preload="none"
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-          isHovered ? 'opacity-100 scale-105' : 'opacity-0'
-        }`}
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
       />
 
-      {/* Cinematic Vignette */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+      {/* Cinematic Vignette & Ambient Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-black/30 opacity-80 group-hover:opacity-85 transition-opacity" />
 
       {/* Top Badges */}
-      <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
-        <span className="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider font-semibold bg-black/60 backdrop-blur-md text-[#e6b980] border border-[#e6b980]/30 shadow-md">
-          {project.categoryLabel}
+      <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10 pointer-events-none">
+        <span className="flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider font-semibold bg-black/70 backdrop-blur-md text-[#e6b980] border border-[#e6b980]/30 shadow-md">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#e6b980] animate-pulse" />
+          <span>{project.categoryLabel}</span>
         </span>
 
         {project.badge && (
-          <span className="px-3 py-1 rounded-full text-[10px] font-sans font-medium bg-white/10 backdrop-blur-md text-white border border-white/15 flex items-center gap-1.5 shadow-md">
+          <span className="px-3 py-1 rounded-full text-[10px] font-sans font-medium bg-black/60 backdrop-blur-md text-white border border-white/15 flex items-center gap-1.5 shadow-md">
             <Sparkles className="w-3 h-3 text-[#e6b980]" />
             <span>{project.badge}</span>
           </span>
         )}
       </div>
 
-      {/* Center Hover Indicator */}
+      {/* Center Hover Play Indicator */}
       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none">
         <div className="w-14 h-14 rounded-full bg-[#e6b980] text-black flex items-center justify-center shadow-[0_0_30px_rgba(230,185,128,0.8)] transform scale-75 group-hover:scale-100 transition-transform duration-300">
           <Play className="w-6 h-6 fill-black ml-0.5" />
@@ -112,7 +105,7 @@ function ProjectCard({ project, onSelect, isMasonry }) {
             <span className="truncate max-w-[200px]">{project.cameraGear.split('+')[0]}</span>
           </span>
           <span className="text-[#e6b980] font-semibold flex items-center gap-1">
-            <span>Explore</span>
+            <span>Play Film</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </span>
         </div>

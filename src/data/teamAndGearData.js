@@ -1,3 +1,7 @@
+import ayuvPhoto from '../assets/Ayuv Bastola.jpg';
+import barshadPhoto from '../assets/Brasad.jpg';
+import sabinPhoto from '../assets/Sabin.jpg';
+
 export const PHILOSOPHY_PILLARS = [
   {
     number: '01',
@@ -18,36 +22,28 @@ export const PHILOSOPHY_PILLARS = [
 
 export const TEAM_MEMBERS = [
   {
-    name: 'Ayuv Shrestha',
-    role: 'Founder & Executive Director',
-    bio: 'Award-winning director and visual architect with over 10 years directing global commercial campaigns and high-end automotive films.',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
-    awards: 'Cannes Lions Shortlist • Vimeo Staff Pick',
-    signatureGear: 'RED V-Raptor 8K VV'
+    name: 'Ayuv Bastola',
+    role: 'Director / Videographer',
+    bio: 'Lead director and visual architect behind AVSR Vision, specializing in narrative brand commercials, luxury visual storytelling, and high-impact cinema productions.',
+    image: ayuvPhoto,
+    awards: 'Executive Director • AVSR Vision',
+    signatureGear: 'RED V-Raptor 8K VV • Cooke Anamorphic'
   },
   {
-    name: 'Marcus Vance',
-    role: 'Director of Photography (DOP)',
-    bio: 'Specialist in high-speed pursuit tracking and anamorphic glass. Former documentary cinematographer with projects across 24 countries.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
-    awards: 'ASC Heritage Nominee',
-    signatureGear: 'Cooke Anamorphic /i Primes'
+    name: 'Barshad',
+    role: 'Editor and videographer',
+    bio: 'Cinematographer and master editor crafting rhythmic narrative pacing, seamless visual transitions, and high-energy commercial and cinematic cuts.',
+    image: barshadPhoto,
+    awards: 'Lead Cinematography & Post',
+    signatureGear: 'Sony FX6 Cinema Line • DaVinci Studio'
   },
   {
-    name: 'Elena Rostova',
-    role: 'Lead Colorist & Post-Production Head',
-    bio: 'Master of color science and analog film emulation. Crafts custom color pipelines in ACES and DaVinci Resolve for global luxury brands.',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
-    awards: 'Colorist Society International Member',
-    signatureGear: 'DaVinci Advanced Panel + Sony BVM-HX310'
-  },
-  {
-    name: 'Liam Thorne',
-    role: 'Chief Drone Pilot & FPV Specialist',
-    bio: 'FAA Part 107 commercial pilot and competitive acrobatic FPV racer. Expert at navigating heavy cinema rigs through difficult micro-climates.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80',
-    awards: 'Red Bull Air Cine Nominee',
-    signatureGear: 'DJI Inspire 3 (X9-8K) + Custom 6S Cinelifter'
+    name: 'Sabin Siwakoti',
+    role: 'Graphics and Design',
+    bio: 'Creative visual designer heading brand identity, cinematic title sequence design, motion graphics, and state-of-the-art visual communication.',
+    image: sabinPhoto,
+    awards: 'Lead Brand & Motion Design',
+    signatureGear: 'Cinema 4D • After Effects • Figma'
   }
 ];
 

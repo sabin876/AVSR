@@ -14,7 +14,6 @@ export default function ProjectModal({ project, onClose, onBookShoot }) {
   const [progress, setProgress] = useState(0);
   const [currentTimeStr, setCurrentTimeStr] = useState('00:00');
   const [durationStr, setDurationStr] = useState('00:00');
-  const [activeStillIndex, setActiveStillIndex] = useState(null);
   const [copied, setCopied] = useState(false);
 
   const videoRef = useRef(null);
@@ -22,16 +21,12 @@ export default function ProjectModal({ project, onClose, onBookShoot }) {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        if (activeStillIndex !== null) {
-          setActiveStillIndex(null);
-        } else {
-          onClose();
-        }
+        onClose();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeStillIndex, onClose]);
+  }, [onClose]);
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
@@ -170,19 +165,6 @@ export default function ProjectModal({ project, onClose, onBookShoot }) {
             <button
               onClick={() => {
                 sounds.playClick();
-                setActiveTab('stills');
-              }}
-              className={`pb-2 px-3 border-b-2 transition-all ${
-                activeTab === 'stills'
-                  ? 'border-[#e6b980] text-white font-semibold'
-                  : 'border-transparent text-neutral-400 hover:text-white'
-              }`}
-            >
-              Stills Gallery ({project.stills?.length || 0})
-            </button>
-            <button
-              onClick={() => {
-                sounds.playClick();
                 setActiveTab('specs');
               }}
               className={`pb-2 px-3 border-b-2 transition-all ${
@@ -290,35 +272,7 @@ export default function ProjectModal({ project, onClose, onBookShoot }) {
               </div>
             )}
 
-            {/* TAB 2: Stills Gallery */}
-            {activeTab === 'stills' && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {project.stills?.map((imgUrl, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => {
-                      sounds.playShutter();
-                      setActiveStillIndex(idx);
-                    }}
-                    className="group relative aspect-[4/3] rounded-xl overflow-hidden cursor-zoom-in border border-white/10 bg-neutral-900"
-                    data-cursor="ZOOM"
-                  >
-                    <img
-                      src={imgUrl}
-                      alt={`Still ${idx + 1}`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <span className="px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md text-white text-xs font-mono">
-                        Still #{idx + 1} • Inspect 4K
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* TAB 3: Camera & Equipment Specs */}
+            {/* TAB 2: Camera & Equipment Specs */}
             {activeTab === 'specs' && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/5 space-y-4">
@@ -400,53 +354,6 @@ export default function ProjectModal({ project, onClose, onBookShoot }) {
             )}
           </div>
         </motion.div>
-
-        {/* Individual Still Fullscreen Lightbox Zoom */}
-        <AnimatePresence>
-          {activeStillIndex !== null && project.stills && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[120] bg-black/98 flex flex-col items-center justify-center p-4"
-            >
-              <button
-                onClick={() => setActiveStillIndex(null)}
-                className="absolute top-6 right-6 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
-              >
-                <X className="w-6 h-6" />
-              </button>
-
-              <img
-                src={project.stills[activeStillIndex]}
-                alt="Zoomed Still"
-                className="max-h-[85vh] max-w-[90vw] object-contain rounded-lg shadow-2xl"
-              />
-
-              <div className="mt-4 flex items-center gap-4 text-white text-xs font-mono">
-                <button
-                  onClick={() =>
-                    setActiveStillIndex((prev) => (prev > 0 ? prev - 1 : project.stills.length - 1))
-                  }
-                  className="p-2 rounded-full bg-white/10 hover:bg-white/20"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <span>
-                  {activeStillIndex + 1} / {project.stills.length}
-                </span>
-                <button
-                  onClick={() =>
-                    setActiveStillIndex((prev) => (prev < project.stills.length - 1 ? prev + 1 : 0))
-                  }
-                  className="p-2 rounded-full bg-white/10 hover:bg-white/20"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </AnimatePresence>
   );

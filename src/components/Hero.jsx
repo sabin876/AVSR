@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Pause, Volume2, VolumeX, ChevronRight, Sparkles, ArrowUpRight, ExternalLink, Film } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, ChevronRight, Sparkles, ArrowUpRight, ExternalLink } from 'lucide-react';
 import { HERO_REELS } from '../data/portfolioData';
 import { sounds } from '../utils/soundEffects';
 import logoImg from '../assets/logo.png';
@@ -12,7 +12,7 @@ export default function Hero({ onExploreWork, onBookShoot }) {
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef(null);
 
-  const activeReel = HERO_REELS[activeReelIndex];
+  const activeReel = HERO_REELS[activeReelIndex] || HERO_REELS[0] || {};
 
   useEffect(() => {
     if (videoRef.current) {
@@ -65,22 +65,23 @@ export default function Hero({ onExploreWork, onBookShoot }) {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
           ref={videoRef}
-          key={activeReel.videoUrl || activeReel.id}
+          key={activeReel?.videoUrl || activeReel?.id || 'reel-master'}
           className="w-full h-full object-cover transform-gpu"
           preload="auto"
           autoPlay
+          loop
           muted={isMuted}
           playsInline
-          poster={activeReel.poster}
+          poster={activeReel?.poster}
           onEnded={handleVideoEnded}
         >
-          <source src={activeReel.videoUrl} type="video/mp4" />
+          <source src={activeReel?.videoUrl || '/videos/IMG_5914.mp4'} type="video/mp4" />
         </video>
 
-        {/* Cinematic Vignette & Gradient Overlays (Zero GPU shader cost) */}
-        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-[#0a0a0a]/60 pointer-events-none" />
-        <div className="absolute inset-0 bg-radial-vignette opacity-80 pointer-events-none" />
+        {/* Cinematic Vignette & Gradient Overlays */}
+        <div className="absolute inset-0 bg-black/25 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/35 to-[#0a0a0a]/50 pointer-events-none" />
+        <div className="absolute inset-0 bg-radial-vignette opacity-60 pointer-events-none" />
       </div>
 
       {/* Top Spacer for Navbar */}
@@ -185,33 +186,23 @@ export default function Hero({ onExploreWork, onBookShoot }) {
                   {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5 text-[#e6b980]" />}
                 </button>
                 <div className="hidden sm:block px-2.5 text-[10px] font-mono text-neutral-400 border-l border-white/10">
-                  {activeReel.stats}
+                  {activeReel?.stats || '8K Master • Directed by AVSR'}
                 </div>
               </div>
             </motion.div>
 
-            {/* Video Reel Switcher Tabs */}
+            {/* Signature Reel Feature Pill */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="mt-8 flex flex-wrap gap-2.5"
+              className="mt-8 flex items-center gap-3"
             >
-              {HERO_REELS.map((reel, idx) => (
-                <button
-                  key={reel.id}
-                  onClick={() => switchReel(idx)}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-medium tracking-wider transition-all text-left flex items-center gap-2 ${
-                    activeReelIndex === idx
-                      ? 'bg-white/15 border border-[#e6b980] text-white shadow-[0_0_20px_rgba(230,185,128,0.2)]'
-                      : 'bg-black/40 border border-white/5 text-neutral-400 hover:text-white hover:bg-white/5'
-                  }`}
-                  data-cursor="REEL"
-                >
-                  <span className={`w-2 h-2 rounded-full ${activeReelIndex === idx ? 'bg-[#e6b980]' : 'bg-neutral-600'}`} />
-                  <span className="font-semibold text-[11px]">{reel.title}</span>
-                </button>
-              ))}
+              <div className="px-3.5 py-1.5 rounded-xl bg-white/10 border border-[#e6b980]/40 text-white shadow-[0_0_20px_rgba(230,185,128,0.2)] flex items-center gap-2 text-xs font-mono">
+                <span className="w-2 h-2 rounded-full bg-[#e6b980] animate-pulse" />
+                <span className="text-[#e6b980] font-bold">MASTER REEL:</span>
+                <span className="text-neutral-200">IMG_5914.mp4 (8K Cinema Master)</span>
+              </div>
             </motion.div>
           </div>
 

@@ -1,14 +1,37 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Sparkles, Camera, Award, Shield, Eye, ArrowUpRight,
-  Layers, Compass, ZoomIn, X
+  Layers, Compass, ZoomIn, X, Play, Pause, Volume2, VolumeX, Film
 } from 'lucide-react';
 import { PHILOSOPHY_PILLARS, TEAM_MEMBERS, BTS_GALLERY } from '../data/teamAndGearData';
 import { sounds } from '../utils/soundEffects';
 
 export default function AboutSection() {
   const [selectedBtsImage, setSelectedBtsImage] = useState(null);
+  const [isBtsVideoMuted, setIsBtsVideoMuted] = useState(true);
+  const [isBtsVideoPlaying, setIsBtsVideoPlaying] = useState(true);
+  const btsVideoRef = useRef(null);
+
+  const toggleBtsPlay = () => {
+    sounds.playClick();
+    if (!btsVideoRef.current) return;
+    if (btsVideoRef.current.paused) {
+      btsVideoRef.current.play().then(() => setIsBtsVideoPlaying(true)).catch(() => {});
+    } else {
+      btsVideoRef.current.pause();
+      setIsBtsVideoPlaying(false);
+    }
+  };
+
+  const toggleBtsMute = () => {
+    sounds.playClick();
+    const nextMuted = !isBtsVideoMuted;
+    setIsBtsVideoMuted(nextMuted);
+    if (btsVideoRef.current) {
+      btsVideoRef.current.muted = nextMuted;
+    }
+  };
 
   return (
     <section id="about" className="relative py-24 sm:py-32 bg-[#0a0a0a] border-t border-white/[0.06]">
@@ -83,12 +106,12 @@ export default function AboutSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {TEAM_MEMBERS.map((member, idx) => (
               <motion.div
                 key={idx}
                 whileHover={{ y: -6 }}
-                className="group rounded-2xl overflow-hidden bg-[#121212] border border-white/[0.08] hover:border-[#e6b980]/50 transition-all"
+                className="group rounded-3xl overflow-hidden bg-gradient-to-b from-[#18181b] via-[#121214] to-[#0a0a0c] border border-white/[0.08] hover:border-[#e6b980]/50 transition-all shadow-xl hover:shadow-[0_20px_50px_rgba(230,185,128,0.15)]"
                 data-cursor="DIRECTOR"
               >
                 <div className="relative aspect-[3/4] overflow-hidden bg-neutral-900">
@@ -96,7 +119,7 @@ export default function AboutSection() {
                     src={member.image}
                     alt={member.name}
                     loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90 contrast-105"
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 filter brightness-95 contrast-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
@@ -133,7 +156,7 @@ export default function AboutSection() {
 
         {/* Visually Striking 'Behind the Scenes' Gallery */}
         <div>
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#e6b980] font-bold block mb-2">
               On Set
             </span>
@@ -143,6 +166,72 @@ export default function AboutSection() {
             <p className="mt-2 text-xs sm:text-sm text-neutral-400 font-light">
               Raw documentary moments from remote glaciers, high-speed night circuits, and private European villas.
             </p>
+          </div>
+
+          {/* Featured Behind The Scenes Video Card (IMG_5914.mp4) */}
+          <div className="mb-10 max-w-4xl mx-auto rounded-3xl overflow-hidden bg-gradient-to-b from-[#18181b] to-[#0c0c0e] border border-[#e6b980]/35 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+            {/* BTS Card Top Header */}
+            <div className="flex items-center justify-between px-4 sm:px-6 py-3 bg-black/90 border-b border-white/[0.08] text-xs font-mono">
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-red-950/80 border border-red-500/40 text-red-400">
+                  <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
+                  <span className="font-bold text-[9px]">BTS REC LIVE</span>
+                </div>
+                <span className="text-[#e6b980] font-bold text-[10px] hidden sm:inline">IMG_5914.MP4</span>
+              </div>
+              <div className="flex items-center gap-2 text-neutral-300 text-[10px] sm:text-[11px]">
+                <Camera className="w-3.5 h-3.5 text-[#e6b980]" />
+                <span className="truncate">RED V-Raptor 8K • Cooke 50mm Anamorphic</span>
+              </div>
+            </div>
+
+            {/* BTS Video Player */}
+            <div className="relative aspect-[16/9] w-full bg-black overflow-hidden group">
+              <video
+                ref={btsVideoRef}
+                src="/videos/IMG_5914.mp4"
+                poster="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1920&q=80"
+                autoPlay
+                loop
+                muted={isBtsVideoMuted}
+                playsInline
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/25 pointer-events-none" />
+
+              {/* In-Video Telemetry & Controls */}
+              <div className="absolute bottom-4 left-4 right-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#e6b980]/20 text-[#e6b980] text-[9px] font-mono font-bold uppercase mb-1">
+                    <Film className="w-2.5 h-2.5" />
+                    <span>Featured On-Set BTS Footage</span>
+                  </div>
+                  <h4 className="font-display font-bold text-base sm:text-lg text-white">
+                    AVSR Master Production Reel (IMG_5914)
+                  </h4>
+                  <p className="text-xs text-neutral-300 font-light hidden sm:block">
+                    Director's raw lens capturing live cinema rigging, precision lighting, and anamorphic optics.
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2 self-end sm:self-auto shrink-0">
+                  <button
+                    onClick={toggleBtsMute}
+                    className="p-2.5 rounded-xl bg-black/80 hover:bg-black border border-white/20 text-[#e6b980] backdrop-blur-md transition-colors shadow-lg"
+                    title={isBtsVideoMuted ? "Unmute BTS Audio" : "Mute BTS Audio"}
+                  >
+                    {isBtsVideoMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                  </button>
+                  <button
+                    onClick={toggleBtsPlay}
+                    className="p-2.5 rounded-xl bg-black/80 hover:bg-black border border-white/20 text-white backdrop-blur-md transition-colors shadow-lg"
+                    title={isBtsVideoPlaying ? "Pause BTS Video" : "Play BTS Video"}
+                  >
+                    {isBtsVideoPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 fill-current" />}
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
