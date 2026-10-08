@@ -6,7 +6,9 @@ import {
 } from 'lucide-react';
 import { PHILOSOPHY_PILLARS, TEAM_MEMBERS, BTS_GALLERY } from '../data/teamAndGearData';
 import { sounds } from '../utils/soundEffects';
-import img5914Video from '../assets/IMG_5914.MP4';
+
+const btsVideoUrl = '/videos/cricket.mp4';
+const FALLBACK_VIDEO = '/videos/cricket.mp4';
 
 export default function AboutSection() {
   const [selectedBtsImage, setSelectedBtsImage] = useState(null);
@@ -14,8 +16,7 @@ export default function AboutSection() {
   const [isBtsVideoPlaying, setIsBtsVideoPlaying] = useState(true);
   const btsVideoRef = useRef(null);
 
-  const FALLBACK_VIDEO = "/videos/IMG_5914.mp4";
-  const [btsVideoSrc, setBtsVideoSrc] = useState(img5914Video);
+  const [btsVideoSrc, setBtsVideoSrc] = useState(btsVideoUrl);
 
   const handleBtsVideoError = () => {
     if (btsVideoSrc !== FALLBACK_VIDEO) {

@@ -4,9 +4,10 @@ import { Play, Pause, Volume2, VolumeX, ChevronRight, Sparkles, ArrowUpRight, Ex
 import { HERO_REELS } from '../data/portfolioData';
 import { sounds } from '../utils/soundEffects';
 import logoImg from '../assets/logo.png';
-import masterVideo from '../assets/IMG_5914.MP4';
-import cricketVideo from '../assets/cricket.mp4';
 import PhotoViewfinderCard from './PhotoViewfinderCard';
+
+const masterVideo = '/videos/IMG_5914.mp4';
+const cricketVideo = '/videos/cricket.mp4';
 
 export default function Hero({ onExploreWork, onBookShoot }) {
   const [activeReelIndex, setActiveReelIndex] = useState(0);

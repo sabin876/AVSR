@@ -13,8 +13,9 @@ import {
   Film
 } from 'lucide-react';
 import { sounds } from '../utils/soundEffects';
-import masterVideo from '../assets/IMG_5914.MP4';
-import cricketVideo from '../assets/cricket.mp4';
+
+const masterVideo = '/videos/IMG_5914.mp4';
+const cricketVideo = '/videos/cricket.mp4';
 
 const MASTER_REEL = {
   id: 'reel-cricket',

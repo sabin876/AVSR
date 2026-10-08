@@ -30,3 +30,6 @@ dist-ssr
 *.mkv
 *.zip
 
+# Allow essential web videos
+!public/videos/cricket.mp4
+
