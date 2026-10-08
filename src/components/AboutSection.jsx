@@ -14,7 +14,7 @@ export default function AboutSection() {
   const btsVideoRef = useRef(null);
 
   const FALLBACK_VIDEO = "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4";
-  const [btsVideoSrc, setBtsVideoSrc] = useState("/videos/IMG_5914.mp4");
+  const [btsVideoSrc, setBtsVideoSrc] = useState("/videos/Be.MP4");
 
   const handleBtsVideoError = () => {
     if (btsVideoSrc !== FALLBACK_VIDEO) {

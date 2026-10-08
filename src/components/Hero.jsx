@@ -14,10 +14,10 @@ export default function Hero({ onExploreWork, onBookShoot }) {
 
   const activeReel = HERO_REELS[activeReelIndex] || HERO_REELS[0] || {};
   const FALLBACK_VIDEO = "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4";
-  const [videoSrc, setVideoSrc] = useState(activeReel?.videoUrl || '/videos/IMG_5914.mp4');
+  const [videoSrc, setVideoSrc] = useState(activeReel?.videoUrl || '/videos/Be.MP4');
 
   useEffect(() => {
-    setVideoSrc(activeReel?.videoUrl || '/videos/IMG_5914.mp4');
+    setVideoSrc(activeReel?.videoUrl || '/videos/Be.MP4');
   }, [activeReelIndex]);
 
   useEffect(() => {
@@ -213,8 +213,8 @@ export default function Hero({ onExploreWork, onBookShoot }) {
             >
               <div className="px-3.5 py-1.5 rounded-xl bg-white/10 border border-[#e6b980]/40 text-white shadow-[0_0_20px_rgba(230,185,128,0.2)] flex items-center gap-2 text-xs font-mono">
                 <span className="w-2 h-2 rounded-full bg-[#e6b980] animate-pulse" />
-                <span className="text-[#e6b980] font-bold">MASTER REEL:</span>
-                <span className="text-neutral-200">IMG_5914.mp4 (8K Cinema Master)</span>
+                <span className="text-[#e6b980] font-bold">ACTIVE REEL:</span>
+                <span className="text-neutral-200">{activeReel?.fileLabel || 'Be.MP4'} ({activeReel?.badge || '8K Cinema Master'})</span>
               </div>
             </motion.div>
           </div>

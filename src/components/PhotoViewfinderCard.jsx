@@ -15,12 +15,12 @@ import {
 import { sounds } from '../utils/soundEffects';
 
 const MASTER_REEL = {
-  id: 'reel-img5914',
-  title: 'AVSR Master Reel (IMG_5914)',
-  fileLabel: 'IMG_5914.mp4',
-  subtitle: 'Signature Narrative & Behind The Scenes Film',
+  id: 'reel-be',
+  title: 'AVSR Master Reel (Be.MP4)',
+  fileLabel: 'Be.MP4',
+  subtitle: 'Signature Narrative & Commercial Film',
   genre: '8K Master Cinema Reel',
-  badge: 'IMG_5914 • 8K RAW',
+  badge: 'Be.MP4 • 8K RAW',
   camera: 'RED V-Raptor 8K VV',
   lens: 'Cooke 50mm Anamorphic /i',
   settings: {
@@ -31,8 +31,8 @@ const MASTER_REEL = {
     format: '8K DCI RAW'
   },
   location: 'AVSR Vision Studio',
-  video: '/videos/IMG_5914.mp4',
-  videoUrl: '/videos/IMG_5914.mp4',
+  video: '/videos/Be.MP4',
+  videoUrl: '/videos/Be.MP4',
   poster: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1920&q=80',
   accentColor: '#e6b980'
 };
