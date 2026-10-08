@@ -4,8 +4,8 @@ import { Play, Pause, Volume2, VolumeX, ChevronRight, Sparkles, ArrowUpRight, Ex
 import { HERO_REELS } from '../data/portfolioData';
 import { sounds } from '../utils/soundEffects';
 import logoImg from '../assets/logo.png';
-import beVideo from '../assets/Be.MP4';
-import cricketVideo from '../assets/Cricket.mp4';
+import beVideo from '../assets/be.mp4';
+import cricketVideo from '../assets/cricket.mp4';
 import PhotoViewfinderCard from './PhotoViewfinderCard';
 
 export default function Hero({ onExploreWork, onBookShoot }) {
@@ -30,12 +30,13 @@ export default function Hero({ onExploreWork, onBookShoot }) {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.load();
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = isMuted;
       videoRef.current.play().catch(() => {
         // Autoplay policy fallback
       });
     }
-  }, [videoSrc, activeReelIndex]);
+  }, [videoSrc, activeReelIndex, isMuted]);
 
   const handleVideoError = () => {
     // If asset import somehow fails, fallback to public path or imported video

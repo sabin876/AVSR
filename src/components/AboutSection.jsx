@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import { PHILOSOPHY_PILLARS, TEAM_MEMBERS, BTS_GALLERY } from '../data/teamAndGearData';
 import { sounds } from '../utils/soundEffects';
-import beVideo from '../assets/Be.MP4';
+import beVideo from '../assets/be.mp4';
 
 export default function AboutSection() {
   const [selectedBtsImage, setSelectedBtsImage] = useState(null);

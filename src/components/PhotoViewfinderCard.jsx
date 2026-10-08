@@ -13,7 +13,7 @@ import {
   Film
 } from 'lucide-react';
 import { sounds } from '../utils/soundEffects';
-import beVideo from '../assets/Be.MP4';
+import beVideo from '../assets/be.mp4';
 
 const MASTER_REEL = {
   id: 'reel-be',
