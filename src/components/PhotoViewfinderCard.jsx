@@ -13,6 +13,7 @@ import {
   Film
 } from 'lucide-react';
 import { sounds } from '../utils/soundEffects';
+import beVideo from '../assets/Be.MP4';
 
 const MASTER_REEL = {
   id: 'reel-be',
@@ -31,8 +32,8 @@ const MASTER_REEL = {
     format: '8K DCI RAW'
   },
   location: 'AVSR Vision Studio',
-  video: '/videos/Be.MP4',
-  videoUrl: '/videos/Be.MP4',
+  video: beVideo,
+  videoUrl: beVideo,
   poster: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1920&q=80',
   accentColor: '#e6b980'
 };
@@ -42,8 +43,7 @@ export default function PhotoViewfinderCard() {
   const videoRef = useRef(null);
   const timecodeRef = useRef(null);
 
-  const FALLBACK_VIDEO = "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4";
-  const [videoSrc, setVideoSrc] = useState(reel.video || reel.videoUrl);
+  const [videoSrc, setVideoSrc] = useState(beVideo);
 
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);

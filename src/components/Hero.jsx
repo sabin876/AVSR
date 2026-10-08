@@ -4,6 +4,8 @@ import { Play, Pause, Volume2, VolumeX, ChevronRight, Sparkles, ArrowUpRight, Ex
 import { HERO_REELS } from '../data/portfolioData';
 import { sounds } from '../utils/soundEffects';
 import logoImg from '../assets/logo.png';
+import beVideo from '../assets/Be.MP4';
+import cricketVideo from '../assets/Cricket.mp4';
 import PhotoViewfinderCard from './PhotoViewfinderCard';
 
 export default function Hero({ onExploreWork, onBookShoot }) {
@@ -13,11 +15,17 @@ export default function Hero({ onExploreWork, onBookShoot }) {
   const videoRef = useRef(null);
 
   const activeReel = HERO_REELS[activeReelIndex] || HERO_REELS[0] || {};
-  const FALLBACK_VIDEO = "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4";
-  const [videoSrc, setVideoSrc] = useState(activeReel?.videoUrl || '/videos/Be.MP4');
+  
+  const getReelVideo = (reel) => {
+    if (reel?.id === 'reel-cricket') return cricketVideo;
+    return beVideo;
+  };
+
+  const [videoSrc, setVideoSrc] = useState(getReelVideo(activeReel));
 
   useEffect(() => {
-    setVideoSrc(activeReel?.videoUrl || '/videos/Be.MP4');
+    const currentVideo = getReelVideo(activeReel);
+    setVideoSrc(currentVideo);
   }, [activeReelIndex]);
 
   useEffect(() => {
@@ -30,8 +38,9 @@ export default function Hero({ onExploreWork, onBookShoot }) {
   }, [videoSrc, activeReelIndex]);
 
   const handleVideoError = () => {
-    if (videoSrc !== FALLBACK_VIDEO) {
-      setVideoSrc(FALLBACK_VIDEO);
+    // If asset import somehow fails, fallback to public path or imported video
+    if (videoSrc !== beVideo) {
+      setVideoSrc(beVideo);
     }
   };
 
@@ -78,6 +87,7 @@ export default function Hero({ onExploreWork, onBookShoot }) {
         <video
           ref={videoRef}
           key={videoSrc}
+          src={videoSrc}
           className="w-full h-full object-cover transform-gpu"
           preload="auto"
           autoPlay
@@ -87,9 +97,7 @@ export default function Hero({ onExploreWork, onBookShoot }) {
           poster={activeReel?.poster}
           onError={handleVideoError}
           onEnded={handleVideoEnded}
-        >
-          <source src={videoSrc} type="video/mp4" />
-        </video>
+        />
 
         {/* Cinematic Vignette & Gradient Overlays */}
         <div className="absolute inset-0 bg-black/25 pointer-events-none" />

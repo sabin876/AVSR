@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { PHILOSOPHY_PILLARS, TEAM_MEMBERS, BTS_GALLERY } from '../data/teamAndGearData';
 import { sounds } from '../utils/soundEffects';
+import beVideo from '../assets/Be.MP4';
 
 export default function AboutSection() {
   const [selectedBtsImage, setSelectedBtsImage] = useState(null);
@@ -13,8 +14,7 @@ export default function AboutSection() {
   const [isBtsVideoPlaying, setIsBtsVideoPlaying] = useState(true);
   const btsVideoRef = useRef(null);
 
-  const FALLBACK_VIDEO = "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4";
-  const [btsVideoSrc, setBtsVideoSrc] = useState("/videos/Be.MP4");
+  const [btsVideoSrc, setBtsVideoSrc] = useState(beVideo);
 
   const handleBtsVideoError = () => {
     if (btsVideoSrc !== FALLBACK_VIDEO) {
