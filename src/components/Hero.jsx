@@ -13,6 +13,12 @@ export default function Hero({ onExploreWork, onBookShoot }) {
   const videoRef = useRef(null);
 
   const activeReel = HERO_REELS[activeReelIndex] || HERO_REELS[0] || {};
+  const FALLBACK_VIDEO = "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4";
+  const [videoSrc, setVideoSrc] = useState(activeReel?.videoUrl || '/videos/IMG_5914.mp4');
+
+  useEffect(() => {
+    setVideoSrc(activeReel?.videoUrl || '/videos/IMG_5914.mp4');
+  }, [activeReelIndex]);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -21,7 +27,13 @@ export default function Hero({ onExploreWork, onBookShoot }) {
         // Autoplay policy fallback
       });
     }
-  }, [activeReelIndex]);
+  }, [videoSrc, activeReelIndex]);
+
+  const handleVideoError = () => {
+    if (videoSrc !== FALLBACK_VIDEO) {
+      setVideoSrc(FALLBACK_VIDEO);
+    }
+  };
 
   const togglePlay = () => {
     sounds.playClick();
@@ -65,7 +77,7 @@ export default function Hero({ onExploreWork, onBookShoot }) {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
           ref={videoRef}
-          key={activeReel?.videoUrl || activeReel?.id || 'reel-master'}
+          key={videoSrc}
           className="w-full h-full object-cover transform-gpu"
           preload="auto"
           autoPlay
@@ -73,9 +85,10 @@ export default function Hero({ onExploreWork, onBookShoot }) {
           muted={isMuted}
           playsInline
           poster={activeReel?.poster}
+          onError={handleVideoError}
           onEnded={handleVideoEnded}
         >
-          <source src={activeReel?.videoUrl || '/videos/IMG_5914.mp4'} type="video/mp4" />
+          <source src={videoSrc} type="video/mp4" />
         </video>
 
         {/* Cinematic Vignette & Gradient Overlays */}

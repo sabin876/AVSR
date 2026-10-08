@@ -76,7 +76,7 @@ export default function Footer({ onSocialClick }) {
                 href="https://www.instagram.com/avsr421/"
                 target="_blank"
                 rel="noreferrer"
-                className="p-2.5 rounded-full bg-white/[0.03] border border-white/5 hover:border-[#e6b980] hover:text-[#e6b980] transition-colors"
+                className="flex items-center gap-2 px-3 py-2 rounded-full bg-gradient-to-r from-[#833ab4]/20 via-[#fd1d1d]/20 to-[#fcb045]/20 border border-pink-500/40 hover:border-pink-400 text-pink-300 hover:text-white transition-all text-xs font-mono font-semibold"
                 title="Follow @avsr421 on Instagram"
               >
                 <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
@@ -84,35 +84,7 @@ export default function Footer({ onSocialClick }) {
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                   <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
                 </svg>
-              </a>
-
-              {/* YouTube SVG */}
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noreferrer"
-                className="p-2.5 rounded-full bg-white/[0.03] border border-white/5 hover:border-[#e6b980] hover:text-[#e6b980] transition-colors"
-                title="YouTube Showreels"
-              >
-                <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
-                  <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
-                  <polygon points="10 15 15 12 10 9" fill="currentColor" />
-                </svg>
-              </a>
-
-              {/* LinkedIn SVG */}
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="p-2.5 rounded-full bg-white/[0.03] border border-white/5 hover:border-[#e6b980] hover:text-[#e6b980] transition-colors"
-                title="LinkedIn"
-              >
-                <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                  <rect width="4" height="12" x="2" y="9" />
-                  <circle cx="4" cy="4" r="2" />
-                </svg>
+                <span>@avsr421</span>
               </a>
 
               {/* WhatsApp */}

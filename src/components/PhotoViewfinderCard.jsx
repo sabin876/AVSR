@@ -42,12 +42,21 @@ export default function PhotoViewfinderCard() {
   const videoRef = useRef(null);
   const timecodeRef = useRef(null);
 
+  const FALLBACK_VIDEO = "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4";
+  const [videoSrc, setVideoSrc] = useState(reel.video || reel.videoUrl);
+
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [isFlashing, setIsFlashing] = useState(false);
   const [showGrid, setShowGrid] = useState(true);
   const [isRawLog, setIsRawLog] = useState(false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
+  const handleVideoError = () => {
+    if (videoSrc !== FALLBACK_VIDEO) {
+      setVideoSrc(FALLBACK_VIDEO);
+    }
+  };
 
   // Guarantee autoplay & loop on mount
   useEffect(() => {
@@ -155,12 +164,13 @@ export default function PhotoViewfinderCard() {
             {/* Single Video Player Playing IMG_5914.mp4 in Continuous Loop */}
             <video
               ref={videoRef}
-              src={reel.video || reel.videoUrl}
+              src={videoSrc}
               poster={reel.poster}
               autoPlay
               loop
               muted={isMuted}
               playsInline
+              onError={handleVideoError}
               onTimeUpdate={handleTimeUpdate}
               className="w-full h-full object-cover transform-gpu"
             />

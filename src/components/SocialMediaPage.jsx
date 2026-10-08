@@ -57,7 +57,7 @@ export default function SocialMediaPage({ onBackToHome }) {
       'TITLE:Cinematic Media & Production Studio',
       'TEL;TYPE=CELL,VOICE:0523406989',
       'EMAIL;TYPE=INTERNET:ayuvbastola14@gmail.com',
-      'URL:https://avsrfilms.com',
+      'URL:https://www.instagram.com/avsr421/',
       'ADR;TYPE=WORK:;;D3 Design District, Tower 2;Dubai;;;United Arab Emirates',
       'NOTE:Premium Visual Storytelling, Commercial Films, 8K Cinema & Photography.',
       'END:VCARD',
@@ -76,6 +76,17 @@ export default function SocialMediaPage({ onBackToHome }) {
   };
 
   const primaryActions = [
+    {
+      id: 'instagram',
+      title: 'Follow on Instagram',
+      subtitle: '@avsr421',
+      description: 'Daily Commercial Films, BTS Footage & Photography',
+      icon: ExternalLink,
+      href: 'https://www.instagram.com/avsr421/',
+      gradient: 'from-[#833ab4] via-[#fd1d1d] to-[#fcb045]',
+      borderHover: 'hover:border-pink-400/60',
+      badge: 'Official Feed'
+    },
     {
       id: 'phone',
       title: 'Call AVSR Studio',
@@ -100,8 +111,8 @@ export default function SocialMediaPage({ onBackToHome }) {
     },
     {
       id: 'website',
-      title: 'Visit Official Website',
-      subtitle: 'avsrfilms.com',
+      title: 'Visit Official Studio',
+      subtitle: 'AVSR Vision Portfolio',
       description: 'Explore 8K Showreels, Film Works & Capabilities',
       icon: Globe,
       onClick: onBackToHome,
@@ -123,128 +134,123 @@ export default function SocialMediaPage({ onBackToHome }) {
     }
   ];
 
-  const socialChannels = [
-    {
-      name: 'Instagram',
-      handle: '@avsr421',
-      href: 'https://www.instagram.com/avsr421/',
-      color: '#E4405F',
-      hoverBg: 'hover:bg-[#E4405F]/15 hover:border-[#E4405F]/40',
-      icon: (
-        <svg className="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
-          <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-        </svg>
-      )
-    },
-    {
-      name: 'YouTube',
-      handle: 'AVSR Vision',
-      href: 'https://youtube.com',
-      color: '#FF0000',
-      hoverBg: 'hover:bg-[#FF0000]/15 hover:border-[#FF0000]/40',
-      icon: (
-        <svg className="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
-          <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
-          <polygon points="10 15 15 12 10 9" fill="currentColor" />
-        </svg>
-      )
-    },
-    {
-      name: 'LinkedIn',
-      handle: 'AVSR Vision',
-      href: 'https://linkedin.com',
-      color: '#0A66C2',
-      hoverBg: 'hover:bg-[#0A66C2]/15 hover:border-[#0A66C2]/40',
-      icon: (
-        <svg className="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
-          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-          <rect width="4" height="12" x="2" y="9" />
-          <circle cx="4" cy="4" r="2" />
-        </svg>
-      )
-    },
-    {
-      name: 'WhatsApp',
-      handle: '+971 52 340 6989',
-      href: 'https://wa.me/971523406989',
-      color: '#25D366',
-      hoverBg: 'hover:bg-[#25D366]/15 hover:border-[#25D366]/40',
-      icon: (
-        <svg className="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
-          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-        </svg>
-      )
-    },
-    {
-      name: 'TikTok',
-      handle: '@avsrfilms',
-      href: 'https://www.tiktok.com',
-      color: '#00F2FE',
-      hoverBg: 'hover:bg-cyan-500/15 hover:border-cyan-400/40',
-      icon: (
-        <svg className="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
-          <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-        </svg>
-      )
-    },
-    {
-      name: 'X (Twitter)',
-      handle: '@avsr_vision',
-      href: 'https://x.com',
-      color: '#FFFFFF',
-      hoverBg: 'hover:bg-white/15 hover:border-white/40',
-      icon: (
-        <svg className="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
-          <path d="M4 4l11.733 16h4.267l-11.733-16z" />
-          <path d="M4 20l6.768-6.768m2.464-2.464L20 4" />
-        </svg>
-      )
-    }
-  ];
+  const instagramChannel = {
+    name: 'Instagram',
+    handle: '@avsr421',
+    href: 'https://www.instagram.com/avsr421/',
+    color: '#E4405F',
+    icon: (
+      <svg className="w-8 h-8 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+      </svg>
+    )
+  };
 
   return (
     <div className="relative min-h-screen bg-[#06080e] text-[#f5f5f5] flex flex-col justify-between overflow-x-hidden selection:bg-[#e6b980]/30 selection:text-white">
-      {/* Ambient background glows */}
+      {/* Ambient background glows with moving gradient particles */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b from-[#e6b980]/15 via-[#f59e0b]/5 to-transparent rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-to-t from-blue-600/10 via-indigo-600/5 to-transparent rounded-full blur-[140px]" />
+        <motion.div 
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.15, 0.3, 0.15],
+            x: ['-50%', '-48%', '-50%'],
+            y: ['0%', '-5%', '0%']
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute top-[-10%] left-1/2 w-[600px] h-[600px] bg-gradient-to-b from-[#e6b980]/20 via-[#f59e0b]/10 to-transparent rounded-full blur-[120px]" 
+        />
+        <motion.div 
+          animate={{
+            scale: [1, 1.25, 1],
+            opacity: [0.1, 0.25, 0.1],
+            y: ['0%', '5%', '0%']
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+          className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-to-t from-blue-600/15 via-indigo-600/10 to-transparent rounded-full blur-[140px]" 
+        />
+        {/* Floating animated sparkles/orbs in background */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1.5 h-1.5 rounded-full bg-[#e6b980]/40 blur-[1px]"
+            style={{
+              top: `${15 + i * 14}%`,
+              left: `${10 + (i * 27) % 80}%`
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.2, 0.8, 0.2],
+              scale: [1, 1.5, 1]
+            }}
+            transition={{
+              duration: 3 + i,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay: i * 0.5
+            }}
+          />
+        ))}
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:24px_24px] opacity-40" />
       </div>
 
       {/* Main Container */}
-      <div className="relative z-10 w-full max-w-lg mx-auto px-4 sm:px-6 pt-6 pb-16 flex-1 flex flex-col">
+      <motion.div 
+        initial="hidden"
+        animate="show"
+        variants={{
+          hidden: { opacity: 0 },
+          show: {
+            opacity: 1,
+            transition: { staggerChildren: 0.08, delayChildren: 0.1 }
+          }
+        }}
+        className="relative z-10 w-full max-w-lg mx-auto px-4 sm:px-6 pt-6 pb-16 flex-1 flex flex-col"
+      >
         {/* Top Floating Controls */}
-        <div className="flex items-center justify-between mb-8">
-          <button
+        <motion.div 
+          variants={{
+            hidden: { opacity: 0, y: -15 },
+            show: { opacity: 1, y: 0 }
+          }}
+          className="flex items-center justify-between mb-8"
+        >
+          <motion.button
+            whileHover={{ scale: 1.05, x: -2 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => {
               sounds.playClick();
               if (onBackToHome) onBackToHome();
             }}
-            className="group flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/[0.06] border border-white/10 hover:border-[#e6b980]/50 hover:bg-white/10 text-xs font-medium text-neutral-300 hover:text-white transition-all backdrop-blur-md active:scale-95"
+            className="group flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/[0.06] border border-white/10 hover:border-[#e6b980]/50 hover:bg-white/10 text-xs font-medium text-neutral-300 hover:text-white transition-all backdrop-blur-md"
             aria-label="Back to main website"
           >
-            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform text-[#e6b980]" />
+            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform text-[#e6b980]" />
             <span>Back to Studio</span>
-          </button>
+          </motion.button>
 
           <div className="flex items-center gap-2">
-            <button
+            <motion.button
+              whileHover={{ scale: 1.1, rotate: 90 }}
+              whileTap={{ scale: 0.9 }}
               onClick={() => {
                 sounds.playClick();
                 setShowQrModal(true);
               }}
-              className="p-2 rounded-full bg-white/[0.06] border border-white/10 hover:border-white/30 text-neutral-300 hover:text-white transition-all backdrop-blur-md active:scale-95"
+              className="p-2 rounded-full bg-white/[0.06] border border-white/10 hover:border-white/30 text-neutral-300 hover:text-white transition-all backdrop-blur-md"
               title="Show QR Code"
               aria-label="Show QR Code"
             >
               <QrCode className="w-4 h-4" />
-            </button>
+            </motion.button>
 
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={handleShare}
-              className="group flex items-center gap-1.5 px-3 py-2 rounded-full bg-white/[0.06] border border-white/10 hover:border-[#e6b980]/50 hover:bg-white/10 text-xs font-medium text-neutral-300 hover:text-white transition-all backdrop-blur-md active:scale-95"
+              className="group flex items-center gap-1.5 px-3 py-2 rounded-full bg-white/[0.06] border border-white/10 hover:border-[#e6b980]/50 hover:bg-white/10 text-xs font-medium text-neutral-300 hover:text-white transition-all backdrop-blur-md"
               title="Share this page"
               aria-label="Share this page"
             >
@@ -259,47 +265,75 @@ export default function SocialMediaPage({ onBackToHome }) {
                   <span>Share</span>
                 </>
               )}
-            </button>
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Profile / Brand Header */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          variants={{
+            hidden: { opacity: 0, y: 20, scale: 0.95 },
+            show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5 } }
+          }}
           className="text-center mb-8"
         >
-          {/* Glowing Avatar Emblem */}
+          {/* Glowing Avatar Emblem with Animated Pulse Ring */}
           <div className="relative inline-block mb-4">
-            <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1 bg-gradient-to-tr from-[#e6b980] via-[#f59e0b] to-[#141414] shadow-[0_0_40px_rgba(230,185,128,0.25)] mx-auto flex items-center justify-center">
-              <div className="w-full h-full rounded-full bg-[#0c0d14] flex items-center justify-center overflow-hidden border border-white/10">
+            {/* Outer Pulsing Glow Ring */}
+            <motion.div 
+              animate={{
+                scale: [1, 1.15, 1],
+                opacity: [0.4, 0.8, 0.4]
+              }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#e6b980] via-[#f59e0b] to-[#2563eb] blur-md"
+            />
+            
+            <motion.div 
+              whileHover={{ scale: 1.08, rotate: [0, -3, 3, 0] }}
+              transition={{ duration: 0.4 }}
+              className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1 bg-gradient-to-tr from-[#e6b980] via-[#f59e0b] to-[#141414] shadow-[0_0_40px_rgba(230,185,128,0.3)] mx-auto flex items-center justify-center cursor-pointer"
+            >
+              <div className="w-full h-full rounded-full bg-[#0c0d14] flex items-center justify-center overflow-hidden border border-white/10 relative">
                 <img
                   src={logoImg}
                   alt="AVSR VISION Logo"
                   className="w-16 h-16 sm:w-20 sm:h-20 object-contain filter contrast-125 drop-shadow-md"
                 />
               </div>
-            </div>
-            {/* Verified icon pill */}
-            <div
-              className="absolute bottom-1 right-1 p-1.5 rounded-full bg-[#0a0a0a] border border-[#e6b980] text-[#e6b980] shadow-md"
+            </motion.div>
+            
+            {/* Verified icon pill with bounce */}
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ type: 'spring', stiffness: 400, delay: 0.5 }}
+              whileHover={{ scale: 1.25, rotate: 15 }}
+              className="absolute bottom-1 right-1 p-1.5 rounded-full bg-[#0a0a0a] border border-[#e6b980] text-[#e6b980] shadow-lg cursor-pointer"
               title="Verified Creative Studio"
             >
               <ShieldCheck className="w-3.5 h-3.5 fill-[#e6b980]/20" />
-            </div>
+            </motion.div>
           </div>
 
           {/* Studio Name */}
           <h1 className="font-display text-2xl sm:text-3xl font-black text-white tracking-[0.18em] uppercase flex items-center justify-center gap-2">
-            <span>AVSR VISION</span>
+            <motion.span
+              animate={{ textShadow: ['0 0 10px rgba(230,185,128,0.2)', '0 0 25px rgba(230,185,128,0.6)', '0 0 10px rgba(230,185,128,0.2)'] }}
+              transition={{ duration: 4, repeat: Infinity }}
+            >
+              AVSR VISION
+            </motion.span>
           </h1>
 
           {/* Subtitle / Profession Badge */}
-          <div className="mt-2.5 inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#e6b980]/10 border border-[#e6b980]/30 text-[#e6b980] text-[11px] font-mono font-semibold uppercase tracking-[0.2em]">
-            <Sparkles className="w-3 h-3" />
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            className="mt-2.5 inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#e6b980]/10 border border-[#e6b980]/30 text-[#e6b980] text-[11px] font-mono font-semibold uppercase tracking-[0.2em] shadow-[0_0_15px_rgba(230,185,128,0.15)] cursor-default"
+          >
+            <Sparkles className="w-3 h-3 animate-spin" style={{ animationDuration: '6s' }} />
             <span>Creative Media & Production Studio</span>
-          </div>
+          </motion.div>
 
           {/* Short Bio */}
           <p className="mt-3.5 text-neutral-300 text-xs sm:text-sm font-light leading-relaxed max-w-sm mx-auto">
@@ -308,23 +342,32 @@ export default function SocialMediaPage({ onBackToHome }) {
 
           {/* Studio Locations Pill Row */}
           <div className="mt-3 flex items-center justify-center gap-2 text-[11px] font-mono text-neutral-400">
-            <MapPin className="w-3 h-3 text-[#e6b980]" />
+            <MapPin className="w-3 h-3 text-[#e6b980] animate-bounce" />
             <span>Dubai (UAE) • International Operations</span>
           </div>
         </motion.div>
 
         {/* Primary Stacked Action Cards */}
-        <div className="space-y-3.5 mb-10">
-          {primaryActions.map((action, idx) => {
+        <motion.div 
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.07 } }
+          }}
+          className="space-y-3.5 mb-10"
+        >
+          {primaryActions.map((action) => {
             const Icon = action.icon;
             const isExternal = action.href.startsWith('http') || action.href.startsWith('tel:') || action.href.startsWith('mailto:');
 
             return (
               <motion.a
                 key={action.id}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.05 * idx }}
+                variants={{
+                  hidden: { opacity: 0, y: 20, scale: 0.97 },
+                  show: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 300, damping: 24 } }
+                }}
+                whileHover={{ scale: 1.025, y: -3 }}
+                whileTap={{ scale: 0.98 }}
                 href={action.href}
                 onClick={(e) => {
                   sounds.playClick();
@@ -335,16 +378,21 @@ export default function SocialMediaPage({ onBackToHome }) {
                 }}
                 target={isExternal && !action.href.startsWith('tel:') && !action.href.startsWith('mailto:') ? '_blank' : undefined}
                 rel={isExternal ? 'noopener noreferrer' : undefined}
-                className={`group relative flex items-center justify-between p-4 rounded-2xl bg-gradient-to-r ${action.gradient} border border-white/10 ${action.borderHover} backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:-translate-y-0.5 transition-all duration-300`}
+                className={`group relative overflow-hidden flex items-center justify-between p-4 rounded-2xl bg-gradient-to-r ${action.gradient} border border-white/10 ${action.borderHover} backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_15px_35px_rgba(230,185,128,0.2)] transition-all duration-300`}
                 data-cursor="GO"
               >
-                <div className="flex items-center gap-3.5 min-w-0">
-                  <div className="w-11 h-11 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform">
-                    <Icon className="w-5 h-5" />
+                {/* Shimmer Light Sweep on Hover */}
+                <motion.div 
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" 
+                />
+
+                <div className="flex items-center gap-3.5 min-w-0 relative z-10">
+                  <div className="w-11 h-11 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-white shrink-0 group-hover:scale-110 group-hover:bg-white/20 transition-all duration-300">
+                    <Icon className="w-5 h-5 group-hover:rotate-6 transition-transform" />
                   </div>
                   <div className="text-left truncate">
                     <div className="flex items-center gap-2">
-                      <span className="font-display text-sm sm:text-base font-bold text-white tracking-wide truncate">
+                      <span className="font-display text-sm sm:text-base font-bold text-white tracking-wide truncate group-hover:text-[#e6b980] transition-colors">
                         {action.title}
                       </span>
                       {action.badge && (
@@ -362,62 +410,92 @@ export default function SocialMediaPage({ onBackToHome }) {
                   </div>
                 </div>
 
-                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/80 group-hover:text-white group-hover:bg-white/20 transition-all shrink-0 ml-2">
+                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/80 group-hover:text-white group-hover:bg-white/25 transition-all shrink-0 ml-2 relative z-10">
                   <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
               </motion.a>
             );
           })}
-        </div>
+        </motion.div>
 
-        {/* Section Divider: CONNECT SOCIALLY */}
-        <div className="flex items-center gap-3 mb-6">
+        {/* Section Divider: OFFICIAL INSTAGRAM HUB */}
+        <motion.div 
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1 }
+          }}
+          className="flex items-center gap-3 mb-6"
+        >
           <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent via-white/15 to-transparent" />
           <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#e6b980] font-bold">
-            Connect Socially
+            Official Instagram
           </span>
           <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-        </div>
+        </motion.div>
 
-        {/* Social Media 6-Tile Grid (Just like drulhasorthopedic.com/social-media) */}
-        <div className="grid grid-cols-3 gap-3 mb-8">
-          {socialChannels.map((soc, idx) => (
-            <motion.a
-              key={soc.name}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 0.1 + idx * 0.04 }}
-              href={soc.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => sounds.playClick()}
-              className={`group flex flex-col items-center justify-center p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 ${soc.hoverBg} backdrop-blur-md hover:-translate-y-1 transition-all duration-300 text-center`}
-              title={`${soc.name} - ${soc.handle}`}
-            >
-              <div
-                className="w-10 h-10 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform"
-                style={{ color: soc.color }}
-              >
-                {soc.icon}
+        {/* Featured Instagram Hero Card */}
+        <motion.a
+          variants={{
+            hidden: { opacity: 0, scale: 0.9, y: 15 },
+            show: { opacity: 1, scale: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 22 } }
+          }}
+          whileHover={{ scale: 1.03, y: -4 }}
+          whileTap={{ scale: 0.97 }}
+          href={instagramChannel.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => sounds.playClick()}
+          className="group relative overflow-hidden flex flex-col p-5 rounded-3xl bg-gradient-to-br from-[#833ab4]/20 via-[#fd1d1d]/15 to-[#fcb045]/10 border border-pink-500/30 hover:border-pink-500/60 backdrop-blur-xl transition-all duration-300 shadow-[0_15px_35px_rgba(228,64,95,0.15)] mb-8"
+          title="Follow @avsr421 on Instagram"
+        >
+          {/* Shimmer Light Sweep on Hover */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" />
+
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] p-[2px] shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <div className="w-full h-full rounded-[14px] bg-[#0c0d14] flex items-center justify-center text-white">
+                  {instagramChannel.icon}
+                </div>
               </div>
-              <span className="font-display text-xs font-bold text-white group-hover:text-[#e6b980] transition-colors">
-                {soc.name}
-              </span>
-              <span className="text-[10px] font-mono text-neutral-400 truncate w-full mt-0.5">
-                {soc.handle}
-              </span>
-            </motion.a>
-          ))}
-        </div>
+              <div className="text-left">
+                <div className="flex items-center gap-2">
+                  <span className="font-display text-lg font-black text-white tracking-wide group-hover:text-pink-400 transition-colors">
+                    Instagram Feed
+                  </span>
+                  <span className="px-2 py-0.5 rounded-full bg-pink-500/20 text-pink-300 text-[10px] font-mono font-bold uppercase tracking-wider">
+                    Official
+                  </span>
+                </div>
+                <div className="text-sm font-mono font-semibold text-[#e6b980] mt-0.5">
+                  {instagramChannel.handle}
+                </div>
+                <div className="text-xs text-neutral-300 font-light mt-0.5">
+                  Commercial Reels, BTS Shots & Editorial Work
+                </div>
+              </div>
+            </div>
+
+            <div className="w-10 h-10 rounded-full bg-white/10 group-hover:bg-pink-500 group-hover:text-white flex items-center justify-center text-neutral-300 transition-all shrink-0 ml-3">
+              <ExternalLink className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+            </div>
+          </div>
+        </motion.a>
 
         {/* Studio Info & Quick Details Card */}
-        <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md mb-6 text-xs space-y-3.5">
+        <motion.div 
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+          }}
+          className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md mb-6 text-xs space-y-3.5 relative overflow-hidden"
+        >
           <div className="flex items-center justify-between border-b border-white/5 pb-3">
             <span className="text-[10px] font-mono uppercase tracking-widest text-[#e6b980] font-bold">
               Studio Details & Hub
             </span>
             <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
               Accepting Bookings
             </span>
           </div>
@@ -470,15 +548,19 @@ export default function SocialMediaPage({ onBackToHome }) {
 
           {/* Quick Actions Row */}
           <div className="pt-2 border-t border-white/5 flex gap-2">
-            <button
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               onClick={handleDownloadVCard}
-              className="flex-1 py-2.5 px-3 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all active:scale-95"
+              className="flex-1 py-2.5 px-3 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all active:scale-95 shadow-md"
             >
               <Download className="w-3.5 h-3.5 text-[#e6b980]" />
               <span>Save Contact Card (.vcf)</span>
-            </button>
+            </motion.button>
 
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => {
                 sounds.playClick();
                 if (onBackToHome) {
@@ -489,20 +571,26 @@ export default function SocialMediaPage({ onBackToHome }) {
                   }, 200);
                 }
               }}
-              className="py-2.5 px-4 rounded-xl bg-[#e6b980] hover:bg-[#f59e0b] text-black text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-md active:scale-95"
+              className="py-2.5 px-4 rounded-xl bg-[#e6b980] hover:bg-[#f59e0b] text-black text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-lg active:scale-95"
             >
               <Sparkles className="w-3.5 h-3.5" />
               <span>Packages</span>
-            </button>
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Footer info */}
-        <div className="text-center text-[11px] font-mono text-neutral-500 space-y-1">
+        <motion.div 
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1 }
+          }}
+          className="text-center text-[11px] font-mono text-neutral-500 space-y-1"
+        >
           <div>© {new Date().getFullYear()} AVSR VISION (AYUV STUDIOS)</div>
           <div className="text-neutral-600">All Rights Reserved • Crafted for Cinematic Excellence</div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* QR Code Modal */}
       <AnimatePresence>

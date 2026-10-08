@@ -13,6 +13,15 @@ export default function AboutSection() {
   const [isBtsVideoPlaying, setIsBtsVideoPlaying] = useState(true);
   const btsVideoRef = useRef(null);
 
+  const FALLBACK_VIDEO = "https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4";
+  const [btsVideoSrc, setBtsVideoSrc] = useState("/videos/IMG_5914.mp4");
+
+  const handleBtsVideoError = () => {
+    if (btsVideoSrc !== FALLBACK_VIDEO) {
+      setBtsVideoSrc(FALLBACK_VIDEO);
+    }
+  };
+
   const toggleBtsPlay = () => {
     sounds.playClick();
     if (!btsVideoRef.current) return;
@@ -189,12 +198,13 @@ export default function AboutSection() {
             <div className="relative aspect-[16/9] w-full bg-black overflow-hidden group">
               <video
                 ref={btsVideoRef}
-                src="/videos/IMG_5914.mp4"
+                src={btsVideoSrc}
                 poster="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1920&q=80"
                 autoPlay
                 loop
                 muted={isBtsVideoMuted}
                 playsInline
+                onError={handleBtsVideoError}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/25 pointer-events-none" />
