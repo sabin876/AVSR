@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { sounds } from '../utils/soundEffects';
 
-const masterVideo = '/videos/IMG_5914.mp4';
+const masterVideo = '/videos/hero.MP4';
 const cricketVideo = '/videos/cricket.mp4';
 
 const MASTER_REEL = {
@@ -73,11 +73,16 @@ export default function PhotoViewfinderCard({ onBookShoot, activeReelIndex = 0, 
   // Guarantee autoplay & loop on mount and video changes
   useEffect(() => {
     if (videoRef.current) {
+      videoRef.current.defaultMuted = true;
       videoRef.current.muted = isMuted;
       videoRef.current.loop = true;
       videoRef.current.play().then(() => {
         setIsPlaying(true);
       }).catch(() => {
+        if (videoRef.current) {
+          videoRef.current.muted = true;
+          videoRef.current.play().catch(() => {});
+        }
         setIsPlaying(false);
       });
     }
