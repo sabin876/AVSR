@@ -316,6 +316,7 @@ export default function ProjectModal({ project, onClose, onBookShoot }) {
                   <video
                     ref={videoRef}
                     src={project.videoUrl}
+                    poster={project.thumbnail}
                     className="w-full h-full object-contain"
                     autoPlay
                     loop

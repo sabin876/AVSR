@@ -70,12 +70,11 @@ export default function PhotoViewfinderCard({ onBookShoot, activeReelIndex = 0, 
     }
   };
 
-  // Guarantee autoplay & loop on mount and video changes
+  // Guarantee autoplay on mount and video changes
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.defaultMuted = true;
       videoRef.current.muted = isMuted;
-      videoRef.current.loop = true;
       videoRef.current.play().then(() => {
         setIsPlaying(true);
       }).catch(() => {
@@ -184,11 +183,16 @@ export default function PhotoViewfinderCard({ onBookShoot, activeReelIndex = 0, 
               src={videoSrc}
               poster={reel.poster}
               autoPlay
-              loop
               muted={isMuted}
               playsInline
               onError={handleVideoError}
               onTimeUpdate={handleTimeUpdate}
+              onEnded={() => {
+                if (onSelectReel && reels?.length) {
+                  const nextIdx = (activeReelIndex + 1) % reels.length;
+                  onSelectReel(nextIdx);
+                }
+              }}
               className="w-full h-full object-cover transform-gpu"
             />
 

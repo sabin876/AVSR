@@ -93,6 +93,7 @@ export default function Hero({ onExploreWork, onBookShoot }) {
 
   // Switch between reels with smooth crossfade
   const switchReel = useCallback((newIndex) => {
+    sounds.playWhoosh();
     setActiveReelIndex(newIndex);
     setIsPlaying(true);
 
@@ -180,6 +181,12 @@ export default function Hero({ onExploreWork, onBookShoot }) {
     }
   };
 
+  const handleVideoError = () => {
+    // If a video fails to play, smoothly advance to the next reel in the sequence
+    const nextIndex = (activeReelIndex + 1) % HERO_REELS.length;
+    switchReel(nextIndex);
+  };
+
   const togglePlay = () => {
     sounds.playClick();
     const activeVid = activeReelIndex === 0 ? video0Ref.current : video1Ref.current;
@@ -225,8 +232,9 @@ export default function Hero({ onExploreWork, onBookShoot }) {
           }`}
           preload="auto"
           autoPlay
-          muted
+          muted={isMuted}
           playsInline
+          onError={handleVideoError}
           onTimeUpdate={(e) => handleTimeUpdate(e, 0)}
           onEnded={() => switchReel(1)}
         />

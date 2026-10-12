@@ -20,6 +20,8 @@ import { sounds } from '../utils/soundEffects';
    ========================================================================= */
 function VideoCard({ project, onSelect, isMasonry }) {
   const videoRef = useRef(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -40,7 +42,7 @@ function VideoCard({ project, onSelect, isMasonry }) {
 
     observer.observe(video);
     return () => observer.disconnect();
-  }, [project.hoverVideo]);
+  }, [project.hoverVideo, project.videoUrl]);
 
   return (
     <motion.div
@@ -58,17 +60,34 @@ function VideoCard({ project, onSelect, isMasonry }) {
       }`}
       data-cursor="PLAY"
     >
+      {/* Background Poster / High-Res Thumbnail (Guarantees card is always visually stunning) */}
+      {project.thumbnail && (
+        <img
+          src={project.thumbnail}
+          alt={project.title}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          loading="lazy"
+        />
+      )}
+
       {/* Background Auto-Playing Card Video */}
-      <video
-        ref={videoRef}
-        src={project.hoverVideo || project.videoUrl}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-      />
+      {!videoError && (project.hoverVideo || project.videoUrl) && (
+        <video
+          ref={videoRef}
+          src={project.hoverVideo || project.videoUrl}
+          poster={project.thumbnail}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          onLoadedData={() => setVideoLoaded(true)}
+          onError={() => setVideoError(true)}
+          className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 ${
+            videoLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+      )}
 
       {/* Cinematic Vignette */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/30 opacity-80 group-hover:opacity-85 transition-opacity" />
