@@ -14,6 +14,23 @@ import pic13 from '../assets/pic13.PNG';
 import pic14 from '../assets/pic14.PNG';
 import pic15 from '../assets/pic15.jpeg';
 import pic16 from '../assets/pic 16.jpeg';
+import pic17 from '../assets/pic 17.jpeg';
+import pic18 from '../assets/pic 18.jpeg';
+import pic19 from '../assets/pic 19.PNG';
+import pic20 from '../assets/pic 20.PNG';
+import pic21 from '../assets/pic 21.PNG';
+import pic22 from '../assets/pic 22.PNG';
+import pic23 from '../assets/pic 23.PNG';
+import pic24 from '../assets/pic 24.jpeg';
+import pic25 from '../assets/pic 25.PNG';
+import pic26 from '../assets/pic 26.jpeg';
+import pic27 from '../assets/pic 27.jpeg';
+import pic28 from '../assets/pic 28.jpeg';
+import pic29 from '../assets/pic 29.jpeg';
+import pic30 from '../assets/pic 30.PNG';
+import pic31 from '../assets/pic 31.PNG';
+import pic32 from '../assets/pic 32.jpeg';
+import pic33 from '../assets/pic 33.jpeg';
 import rohanHigman from '../assets/Rohan Higman.jpeg';
 
 import posterGraphic from '../assets/graphics/silent_ridge_poster.jpg';
@@ -68,19 +85,19 @@ export const HERO_REELS = [
 ];
 
 export const GALLERY_SECTIONS = [
-  { id: 'video', label: 'Video', icon: 'Film', count: 8, description: 'Commercial campaigns, cinema films & reels' },
-  { id: 'photo', label: 'Image / Photo', icon: 'Camera', count: 17, description: 'High-fashion editorial, bridal heirlooms & athletic stills' },
+  { id: 'video', label: 'Video', icon: 'Film', count: 12, description: 'Commercial campaigns, cinema films & reels' },
+  { id: 'photo', label: 'Image / Photo', icon: 'Camera', count: 34, description: 'High-fashion editorial, bridal heirlooms & athletic stills' },
   { id: 'graphics', label: 'Graphics', icon: 'Palette', count: 8, description: 'Film posters, luxury brand identity & 3D motion art' }
 ];
 
 export const VIDEO_CATEGORIES = [
-  { id: 'all', label: 'All Films (8)' },
-  { id: 'commercial', label: 'Commercial (6)' },
-  { id: 'cinematic', label: 'Cinematic Films (2)' }
+  { id: 'all', label: 'All Films (12)' },
+  { id: 'commercial', label: 'Commercial (8)' },
+  { id: 'cinematic', label: 'Cinematic Films (4)' }
 ];
 
 export const PHOTO_CATEGORIES = [
-  { id: 'all', label: 'All Photos (17)' },
+  { id: 'all', label: 'All Photos (34)' },
   { id: 'bridal', label: 'Bridal & Weddings' },
   { id: 'editorial', label: 'Editorial & Fashion' },
   { id: 'fitness', label: 'Fitness & Commercial' }
@@ -98,6 +115,68 @@ export const GRAPHICS_CATEGORIES = [
 export const PORTFOLIO_CATEGORIES = VIDEO_CATEGORIES;
 
 export const VIDEO_PROJECTS = [
+  {
+    id: 'video-hero-master',
+    type: 'video',
+    title: 'AVSR Signature Hero Master Film (hero.MP4)',
+    fileLabel: 'hero.MP4',
+    client: 'AVSR Signature Showcase',
+    category: 'cinematic',
+    categoryLabel: 'Cinematic Films',
+    year: '2025',
+    tagline: 'Signature narrative & commercial cinema film directed by AVSR Vision.',
+    badge: '8K Master Cinema',
+    aspectRatio: 'aspect-[16/9]',
+    featured: true,
+    hoverVideo: '/videos/hero.MP4',
+    videoUrl: '/videos/hero.MP4',
+    thumbnail: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1600&q=80',
+    cameraGear: 'RED V-Raptor 8K VV + Cooke Anamorphic /i',
+    format: '8K DCI RAW • 24fps • High Dynamic Range',
+    runtime: '01:12',
+    director: 'Ayuv Bastola',
+    dop: 'Barshad',
+    colorist: 'Ayuv Bastola',
+    overview: 'The definitive cinema showreel demonstrating AVSR Vision Studios storytelling prowess, optical anamorphic warmth, and high-production value.',
+    challenge: 'Weaving multi-genre narrative sequences into a seamless and emotionally resonant cinematic journey.',
+    outcome: 'Premiered as the studio signature flagship reel across all global client acquisitions.',
+    metadata: {
+      location: 'AVSR Vision Studio & On-Location',
+      lighting: 'Full Cinematic Rig + Tungsten Accentuation',
+      audioScore: 'Epic Dynamic Orchestral Cinema Score',
+    }
+  },
+  {
+    id: 'video-cricket-commercial-reel',
+    type: 'video',
+    title: 'Cricket Commercial Cinema Reel (cricket.mp4)',
+    fileLabel: 'cricket.mp4',
+    client: 'Action Sports Entertainment',
+    category: 'commercial',
+    categoryLabel: 'Commercial',
+    year: '2025',
+    tagline: 'High impact action & sports cinematography featuring 4K high-speed deliveries.',
+    badge: '4K High Speed Action',
+    aspectRatio: 'aspect-[16/9]',
+    featured: true,
+    hoverVideo: '/videos/cricket.mp4',
+    videoUrl: '/videos/cricket.mp4',
+    thumbnail: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1920&q=80',
+    cameraGear: 'ARRI Alexa Mini LF + ARRI Signature Prime 35mm',
+    format: '4K ProRes 4444 XQ • High Frame Rate',
+    runtime: '00:58',
+    director: 'Ayuv Bastola',
+    dop: 'Barshad',
+    colorist: 'Ayuv Bastola',
+    overview: 'High-octane stadium cricket cinematography capturing precision bowling release, explosive boundary shots, and dramatic slow-motion ball spin.',
+    challenge: 'High-speed shutter calibration under fluctuating arena floodlighting arrays.',
+    outcome: 'Broadcast across international sports advertising campaigns and social media channels.',
+    metadata: {
+      location: 'Cricket Arena Studio',
+      lighting: 'Stadium Floodlight Arrays & Rim Fill',
+      audioScore: 'Thunderous Stadium Percussion & Foley',
+    }
+  },
   {
     id: 'video-1-beautyworld-dubai',
     type: 'video',
@@ -158,6 +237,37 @@ export const VIDEO_PROJECTS = [
       location: 'AVSR Vision Studio',
       lighting: 'Aputure 600d + Light Dome Diffusers',
       audioScore: 'Broadcast Studio Dialogue & Subtle Ambient Strings',
+    }
+  },
+  {
+    id: 'video-3-thought-leadership',
+    type: 'video',
+    title: 'Creative Vision & Strategic Dialogue (Video 3)',
+    fileLabel: 'video3.mp4',
+    client: 'Executive Leadership Series',
+    category: 'commercial',
+    categoryLabel: 'Commercial',
+    year: '2025',
+    tagline: 'In-depth executive conversational dialogue, warm pinstripe aesthetic, and studio depth.',
+    badge: 'Executive Commercial',
+    aspectRatio: 'aspect-[9/16]',
+    featured: true,
+    hoverVideo: '/videos/video3.mp4',
+    videoUrl: '/videos/video3.mp4',
+    thumbnail: '/video_thumbs/video3.jpg',
+    cameraGear: 'Sony FX6 + FE 50mm f/1.2 GM',
+    format: '4K Vertical Cinema • 24fps',
+    runtime: '00:18',
+    director: 'Ayuv Bastola',
+    dop: 'Barshad',
+    colorist: 'Ayuv Bastola',
+    overview: 'Compelling corporate thought-leadership film capturing authentic executive presence, natural conversational energy, and warm golden studio light.',
+    challenge: 'Balancing conversational warmth with sharp corporate framing.',
+    outcome: 'High-performing commercial dialogue driving B2B client confidence.',
+    metadata: {
+      location: 'Corporate Executive Suite',
+      lighting: 'Nanlite Pavotubes & Warm Key Bounce',
+      audioScore: 'Subtle Corporate Ambient Beats',
     }
   },
   {
@@ -344,6 +454,37 @@ export const VIDEO_PROJECTS = [
       location: 'Artisan Kitchen Studio',
       lighting: 'Warm Side Rim Backlight & Steam Illumination',
       audioScore: 'Organic Kitchen Foley & Chill Acoustic Beats',
+    }
+  },
+  {
+    id: 'video-be-brand-campaign',
+    type: 'video',
+    title: 'Horizon Enterprise: Brand Heritage (be.mp4)',
+    fileLabel: 'be.mp4',
+    client: 'Enterprise Corporate Group',
+    category: 'cinematic',
+    categoryLabel: 'Cinematic Films',
+    year: '2025',
+    tagline: 'High-definition cinematic corporate narrative tracking enterprise innovation.',
+    badge: 'Enterprise Cinema',
+    aspectRatio: 'aspect-[9/16]',
+    featured: false,
+    hoverVideo: '/videos/be.mp4',
+    videoUrl: '/videos/be.mp4',
+    thumbnail: '/video_thumbs/video2.jpg',
+    cameraGear: 'ARRI Alexa Mini LF + Signature Prime 58mm',
+    format: '4K Cine Portrait • 24fps',
+    runtime: '00:35',
+    director: 'Ayuv Bastola',
+    dop: 'Barshad',
+    colorist: 'Ayuv Bastola',
+    overview: 'Expansive brand story weaving together corporate dialogue, leadership strategy, and sleek studio aesthetics.',
+    challenge: 'Delivering cinematic gravity within a vertical mobile-first format.',
+    outcome: 'Broadcast across corporate investment showcases and digital brand channels.',
+    metadata: {
+      location: 'Executive Studio & Headquarters',
+      lighting: 'Aputure 600d + Diffuse Softbox',
+      audioScore: 'Modern Orchestral Enterprise Score',
     }
   }
 ];
@@ -772,6 +913,431 @@ export const PHOTO_PROJECTS = [
       lens: 'Sony FE 85mm f/1.4 GM',
       focalLength: '85mm',
       colorSpace: 'Custom Editorial Warm Tone'
+    }
+  },
+  {
+    id: 'photo-emerald-overcoat-17',
+    type: 'photo',
+    title: 'Metropolitan Heritage: Forest Green Trench',
+    image: pic17,
+    client: 'Vogue Autumn Lookbook',
+    category: 'editorial',
+    categoryLabel: 'Editorial & Fashion',
+    year: '2025',
+    tagline: 'Architectural street couture in tailored deep emerald suede with structured lapels.',
+    badge: 'New Autumn Editorial',
+    aspectRatio: 'aspect-[4/5]',
+    cameraGear: 'Sony A7R V + FE 50mm f/1.2 GM',
+    format: '61MP Full-Frame RAW',
+    settings: '1/400s • f/1.4 • ISO 100 • 5200K',
+    photographer: 'Ayuv Bastola',
+    lighting: 'Natural Architectural North Sky Fill + Diffuse Bounce',
+    location: 'Historic Stone Portico & Facade',
+    overview: 'A sophisticated metropolitan high-fashion editorial framed against weathered limestone architecture, showcasing clean tailoring and rich textured green tones.',
+    metadata: {
+      lens: 'Sony FE 50mm f/1.2 GM',
+      focalLength: '50mm',
+      colorSpace: 'Editorial Portra Custom LUT'
+    }
+  },
+  {
+    id: 'photo-terracotta-cape-18',
+    type: 'photo',
+    title: 'Solstice Allure: Terracotta Cape Coat',
+    image: pic18,
+    client: 'Haute Elegance Campaign',
+    category: 'editorial',
+    categoryLabel: 'Editorial & Fashion',
+    year: '2025',
+    tagline: 'Warm rust draped cape coat paired with gold pendant under afternoon amber rim.',
+    badge: 'New Studio Selection',
+    aspectRatio: 'aspect-[4/5]',
+    cameraGear: 'Sony A7R V + FE 85mm f/1.4 GM II',
+    format: '61MP Full-Frame RAW',
+    settings: '1/500s • f/1.8 • ISO 125 • 5400K',
+    photographer: 'Ayuv Bastola',
+    lighting: 'Low-Angle Amber Sun Light + Reflector Fill',
+    location: 'Grand Promenade Steps',
+    overview: 'Close-up beauty and outerwear portrait emphasizing subtle expression, delicate gold jewelry detailing, and tactile rust wool textiles.',
+    metadata: {
+      lens: 'Sony FE 85mm f/1.4 GM II',
+      focalLength: '85mm',
+      colorSpace: 'Warm S-Cinetone Stills'
+    }
+  },
+  {
+    id: 'photo-athletic-explosive-19',
+    type: 'photo',
+    title: 'Apex Kinetic: Explosive Sprint Series',
+    image: pic19,
+    client: 'Apex Performance Athletics',
+    category: 'fitness',
+    categoryLabel: 'Fitness & Commercial',
+    year: '2025',
+    tagline: 'Dynamic track start stance capturing raw athletic agility and power.',
+    badge: 'Performance Series',
+    aspectRatio: 'aspect-[2/3]',
+    cameraGear: 'Sony A1 + FE 35mm f/1.4 GM',
+    format: '50.1MP High-Speed Capture',
+    settings: '1/800s • f/2.0 • ISO 640 • 4600K',
+    photographer: 'Ayuv Bastola',
+    lighting: 'Aputure 600c RGBWW + Ambient Arena Glow',
+    location: 'Titan Fitness Arena',
+    overview: 'Commercial athletic footwear and apparel campaign designed for dynamic high-speed sports promotions.',
+    metadata: {
+      lens: 'Sony FE 35mm f/1.4 GM',
+      focalLength: '35mm',
+      colorSpace: 'Modern High-Contrast Commercial'
+    }
+  },
+  {
+    id: 'photo-studio-resilience-20',
+    type: 'photo',
+    title: 'Resilience & Iron: High-Contrast Athlete Portrait',
+    image: pic20,
+    client: 'Ironclad Activewear',
+    category: 'fitness',
+    categoryLabel: 'Fitness & Commercial',
+    year: '2025',
+    tagline: 'Chiseled athlete silhouette framed by dual-toned rim lighting and studio depth.',
+    badge: 'High-Contrast Commercial',
+    aspectRatio: 'aspect-[2/3]',
+    cameraGear: 'Sony FX3 + FE 50mm f/1.2 GM',
+    format: 'Full-Frame Commercial Sequence',
+    settings: '1/500s • f/1.8 • ISO 400 • 4500K',
+    photographer: 'Ayuv Bastola',
+    lighting: 'Dual Nanlite Pavotubes & Ambient Arena Key',
+    location: 'Metro Gym Studio',
+    overview: 'Urban activewear lookbook capturing athletic silhouette and confident commercial energy.',
+    metadata: {
+      lens: 'Sony FE 50mm f/1.2 GM',
+      focalLength: '50mm',
+      colorSpace: 'Teal & Orange Cinema Tone'
+    }
+  },
+  {
+    id: 'photo-momentum-stride-21',
+    type: 'photo',
+    title: 'Velocity Momentum: Footwear In Motion',
+    image: pic21,
+    client: 'Pace Athletic Footwear',
+    category: 'fitness',
+    categoryLabel: 'Fitness & Commercial',
+    year: '2025',
+    tagline: 'Low-angle athletic motion emphasizing high-performance sneaker grip and speed.',
+    badge: 'Footwear Feature',
+    aspectRatio: 'aspect-[2/3]',
+    cameraGear: 'Sony A1 + FE 24-70mm GM II',
+    format: '50.1MP 30fps Stills Burst',
+    settings: '1/1000s • f/2.2 • ISO 500 • 4800K',
+    photographer: 'Ayuv Bastola',
+    lighting: 'Overhead Track Light Arrays',
+    location: 'Titan Fitness Arena',
+    overview: 'Commercial footwear and activewear photography designed for billboard and social displays.',
+    metadata: {
+      lens: 'Sony FE 24-70mm f/2.8 GM II',
+      focalLength: '42mm',
+      colorSpace: 'Vibrant Dynamic Range'
+    }
+  },
+  {
+    id: 'photo-grit-determination-22',
+    type: 'photo',
+    title: 'Grit & Composure: Studio Endurance Still',
+    image: pic22,
+    client: 'Apex Performance Athletics',
+    category: 'fitness',
+    categoryLabel: 'Fitness & Commercial',
+    year: '2025',
+    tagline: 'Quiet pre-workout focus under atmospheric directional cyan edge rim lights.',
+    badge: 'Commercial Campaign',
+    aspectRatio: 'aspect-[2/3]',
+    cameraGear: 'Sony FX3 + 85mm GM',
+    format: 'Full-Frame Commercial Still',
+    settings: '1/320s • f/2.0 • ISO 320 • 4700K',
+    photographer: 'Ayuv Bastola',
+    lighting: 'Diffuse Key Light + Cyan Edge Rim',
+    location: 'Titan Fitness Arena',
+    overview: 'Hero commercial still showcasing activewear fit and authentic athlete composure.',
+    metadata: {
+      lens: 'Sony FE 85mm f/1.4 GM',
+      focalLength: '85mm',
+      colorSpace: 'Warm Charcoal Grade'
+    }
+  },
+  {
+    id: 'photo-neon-velocity-23',
+    type: 'photo',
+    title: 'Neon Velocity: Modern Athletic Lookbook',
+    image: pic23,
+    client: 'Velocity Sportswear',
+    category: 'fitness',
+    categoryLabel: 'Fitness & Commercial',
+    year: '2025',
+    tagline: 'Striking posture against crimson speed lanes with warm halogen rim glows.',
+    badge: 'Lookbook Hero',
+    aspectRatio: 'aspect-[2/3]',
+    cameraGear: 'Sony A1 + FE 50mm f/1.2 GM',
+    format: '50.1MP High Dynamic Range RAW',
+    settings: '1/640s • f/1.8 • ISO 320 • 4900K',
+    photographer: 'Ayuv Bastola',
+    lighting: 'Spotlight Grid + Warm Ring Lamp',
+    location: 'Titan Fitness Arena',
+    overview: 'Editorial fitness capture exploring contrast, athletic alignment, and clean composition.',
+    metadata: {
+      lens: 'Sony FE 50mm f/1.2 GM',
+      focalLength: '50mm',
+      colorSpace: 'Editorial Velvet Finish'
+    }
+  },
+  {
+    id: 'photo-stronger-arena-24',
+    type: 'photo',
+    title: 'Unstoppable Drive: Arena Fitness Stills',
+    image: pic24,
+    client: 'Titan Arena Series',
+    category: 'fitness',
+    categoryLabel: 'Fitness & Commercial',
+    year: '2025',
+    tagline: 'Atmospheric commercial portrait framed by illuminated typography and studio depth.',
+    badge: 'Editorial Action',
+    aspectRatio: 'aspect-[2/3]',
+    cameraGear: 'Sony A1 + FE 24-70mm f/2.8 GM II',
+    format: '50.1MP Commercial Stills',
+    settings: '1/400s • f/2.8 • ISO 640 • 4200K',
+    photographer: 'Ayuv Bastola',
+    lighting: 'Gym Neon Sign + Aputure Amaran 200d Key',
+    location: 'Titan Fitness Arena',
+    overview: 'Empowering fitness portraiture designed for international athletic brand campaigns.',
+    metadata: {
+      lens: 'Sony FE 24-70mm f/2.8 GM II',
+      focalLength: '50mm',
+      colorSpace: 'Bleach Bypass Film Grade'
+    }
+  },
+  {
+    id: 'photo-scarlet-mehndi-25',
+    type: 'photo',
+    title: 'Scarlet Traditions: Hand Mehndi & Heritage Gold',
+    image: pic25,
+    client: 'Heirloom Bridal Studio',
+    category: 'bridal',
+    categoryLabel: 'Bridal & Weddings',
+    year: '2025',
+    tagline: 'Traditional scarlet veil framing intricate bridal mehndi and royal polki jewelry.',
+    badge: 'Award-Winning Detail',
+    aspectRatio: 'aspect-[16/10]',
+    cameraGear: 'Sony A1 + FE 90mm f/2.8 Macro G OSS',
+    format: '50.1MP Macro RAW',
+    settings: '1/320s • f/2.8 • ISO 200 • 5000K',
+    photographer: 'Ayuv Bastola',
+    lighting: 'Godox AD600 Pro with Deep Parabolic Softbox',
+    location: 'Bridal Suite',
+    overview: 'Iconic close-up bridal heirloom portrait focusing on emotional depth, gold maang tikka, and hand mehndi motifs.',
+    metadata: {
+      lens: 'Sony FE 90mm f/2.8 Macro G OSS',
+      focalLength: '90mm',
+      colorSpace: 'Custom Warm Cinema LUT'
+    }
+  },
+  {
+    id: 'photo-forest-whisper-26',
+    type: 'photo',
+    title: 'Evergreen Romance: Botanical Forest Couple',
+    image: pic26,
+    client: 'Private Couple Destination',
+    category: 'bridal',
+    categoryLabel: 'Bridal & Weddings',
+    year: '2025',
+    tagline: 'Candid emotional vows exchanged amidst vibrant evergreen botanical canopy.',
+    badge: 'Destination Story',
+    aspectRatio: 'aspect-[2/3]',
+    cameraGear: 'Canon EOS R5 + RF 50mm f/1.2L USM',
+    format: '45MP Fine-Art RAW',
+    settings: '1/800s • f/1.6 • ISO 125 • 5400K',
+    photographer: 'Ayuv Bastola',
+    lighting: 'Soft Overcast Forest Canopy Ambient',
+    location: 'Botanical Valley Reserve',
+    overview: 'Emotive couple portraiture focusing on silent connection, delicate hands, and vibrant greens.',
+    metadata: {
+      lens: 'Canon RF 50mm f/1.2L USM',
+      focalLength: '50mm',
+      colorSpace: 'Agfa Vista Neutral Tone'
+    }
+  },
+  {
+    id: 'photo-azure-heritage-27',
+    type: 'photo',
+    title: 'Azure Splendor: Architectural Sapphire Lehenga',
+    image: pic27,
+    client: 'Royal Wedding Collection',
+    category: 'bridal',
+    categoryLabel: 'Bridal & Weddings',
+    year: '2025',
+    tagline: 'Grand palace ballroom framing shimmering crystal blue hand embroidery.',
+    badge: 'Heirloom Masterpiece',
+    aspectRatio: 'aspect-[2/3]',
+    cameraGear: 'Sony A1 + FE 85mm f/1.4 GM II',
+    format: '50.1MP Full-Frame RAW',
+    settings: '1/250s • f/1.8 • ISO 160 • 4800K',
+    photographer: 'Ayuv Bastola',
+    lighting: 'Ambient Ballroom Chandelier + Nanlite 300B Rim',
+    location: 'Palace Banquet Hall',
+    overview: 'Full-length architectural bridal capture highlighting fluid silhouette grace and intricate beadwork reflections.',
+    metadata: {
+      lens: 'Sony FE 85mm f/1.4 GM II',
+      focalLength: '85mm',
+      colorSpace: 'S-Cinetone Stills Calibration'
+    }
+  },
+  {
+    id: 'photo-sunlit-devotion-28',
+    type: 'photo',
+    title: 'Sunlit Devotion: Meadow Golden Hour Stills',
+    image: pic28,
+    client: 'Pre-Wedding Heirloom',
+    category: 'bridal',
+    categoryLabel: 'Bridal & Weddings',
+    year: '2025',
+    tagline: 'Warm golden sun rays illuminating gentle embrace and floral meadow.',
+    badge: 'Pre-Wedding Pick',
+    aspectRatio: 'aspect-[2/3]',
+    cameraGear: 'Canon EOS R5 + RF 85mm f/1.2L USM',
+    format: '45MP Full-Frame Dual Pixel RAW',
+    settings: '1/1000s • f/1.4 • ISO 100 • 5800K',
+    photographer: 'Ayuv Bastola',
+    lighting: 'Golden Hour Backlit Natural Sunlight',
+    location: 'Scenic Hillside Meadow',
+    overview: 'Candid romantic pre-wedding moment capturing gentle laughter and ethereal lens bokeh.',
+    metadata: {
+      lens: 'Canon RF 85mm f/1.2L USM DS',
+      focalLength: '85mm',
+      colorSpace: 'Fuji Pro 400H Film Tone'
+    }
+  },
+  {
+    id: 'photo-lehenga-twirl-29',
+    type: 'photo',
+    title: 'Grace in Motion: Grand Palace Lehenga Twirl',
+    image: pic29,
+    client: 'Royal Wedding Reception',
+    category: 'bridal',
+    categoryLabel: 'Bridal & Weddings',
+    year: '2025',
+    tagline: 'Celebratory lehenga flare beneath majestic palatial skylights.',
+    badge: 'Dynamic Motion',
+    aspectRatio: 'aspect-[2/3]',
+    cameraGear: 'Sony A1 + FE 35mm f/1.4 GM',
+    format: '50.1MP High-Speed Capture',
+    settings: '1/320s • f/2.0 • ISO 320 • 4900K',
+    photographer: 'Ayuv Bastola',
+    lighting: 'Architectural Dome Skylight + Warm Rim Light',
+    location: 'Imperial Grand Palace',
+    overview: 'Dynamic celebratory bridal portrait showcasing movement, joy, and grand interior symmetry.',
+    metadata: {
+      lens: 'Sony FE 35mm f/1.4 GM',
+      focalLength: '35mm',
+      colorSpace: 'Clean Commercial Glow'
+    }
+  },
+  {
+    id: 'photo-pastel-regalia-30',
+    type: 'photo',
+    title: 'Pastel Regalia: Emerald Heirloom Stills',
+    image: pic30,
+    client: 'Private Heirloom Collection',
+    category: 'bridal',
+    categoryLabel: 'Bridal & Weddings',
+    year: '2025',
+    tagline: 'Pastel silk couture adorned with uncut Colombian emeralds.',
+    badge: '100MP Medium Format',
+    aspectRatio: 'aspect-[2/3]',
+    cameraGear: 'Hasselblad X2D 100C + XCD 80mm f/1.9',
+    format: '100MP 16-bit Medium Format RAW',
+    settings: '1/200s • f/2.2 • ISO 64 • 5200K',
+    photographer: 'Ayuv Bastola',
+    lighting: 'Profoto B10X Plus with 5ft Octa & Silver Reflector',
+    location: 'AVSR Portrait Studio',
+    overview: 'Intimate fine-art bridal portraiture capturing intricate embroidery textures, emerald jewelry reflections, and warm skin tones.',
+    metadata: {
+      lens: 'Hasselblad XCD 80mm f/1.9',
+      focalLength: '80mm (63mm eq.)',
+      colorSpace: 'Hasselblad Natural Colour Solution (HNCS)'
+    }
+  },
+  {
+    id: 'photo-pearl-crown-31',
+    type: 'photo',
+    title: 'Crown of Pearls: Editorial Haute Couture',
+    image: pic31,
+    client: 'Vogue Concept Series',
+    category: 'editorial',
+    categoryLabel: 'Editorial & Fashion',
+    year: '2025',
+    tagline: 'Sculptural natural pearls and couture styling under soft studio diffusion.',
+    badge: 'Editorial Spotlight',
+    aspectRatio: 'aspect-[2/3]',
+    cameraGear: 'Leica SL3 + Summilux-SL 50mm f/1.4',
+    format: '60MP BSI Full-Frame DNG',
+    settings: '1/160s • f/2.0 • ISO 100 • 5600K',
+    photographer: 'Ayuv Bastola',
+    lighting: 'Broncolor Para 133FB with Scrim Diffusion',
+    location: 'Studio Cyclorama',
+    overview: 'Avant-garde beauty and fashion editorial celebrating tactile craftsmanship and delicate eye styling.',
+    metadata: {
+      lens: 'Leica Summilux-SL 50mm f/1.4 ASPH',
+      focalLength: '50mm',
+      colorSpace: 'Kodak Portra 400 Color Profile'
+    }
+  },
+  {
+    id: 'photo-staircase-couture-32',
+    type: 'photo',
+    title: 'Heritage Staircase: Minimalist Silk Tailoring',
+    image: pic32,
+    client: 'Maison Chic Lookbook',
+    category: 'editorial',
+    categoryLabel: 'Editorial & Fashion',
+    year: '2025',
+    tagline: 'Architectural vintage villa staircase framing refined silk tailoring.',
+    badge: 'Lookbook Favorite',
+    aspectRatio: 'aspect-[3/4]',
+    cameraGear: 'Fujifilm GFX 100 II + GF 110mm f/2',
+    format: '102MP Medium Format RAW',
+    settings: '1/200s • f/2.2 • ISO 250 • 5400K',
+    photographer: 'Ayuv Bastola',
+    lighting: 'Natural Window Daylight + Silver Fill Reflector',
+    location: 'Heritage Villa Courtyard',
+    overview: 'Effortless luxury fashion study merging architectural lines with gentle natural light sculpting.',
+    metadata: {
+      lens: 'Fujinon GF 110mm f/2 R LM WR',
+      focalLength: '110mm (87mm eq.)',
+      colorSpace: 'Fujifilm Astia Soft Print'
+    }
+  },
+  {
+    id: 'photo-golden-canopy-33',
+    type: 'photo',
+    title: 'Golden Canopy: Sunlight & Chiaroscuro',
+    image: pic33,
+    client: 'Solstice Editorial',
+    category: 'editorial',
+    categoryLabel: 'Editorial & Fashion',
+    year: '2025',
+    tagline: 'Dappled afternoon sunlight creating warm optical lens halation across haute couture.',
+    badge: 'Sunlight Series',
+    aspectRatio: 'aspect-[4/5]',
+    cameraGear: 'Sony A7R V + FE 50mm f/1.2 GM',
+    format: '61MP Full-Frame BSI RAW',
+    settings: '1/1250s • f/1.4 • ISO 64 • 6000K',
+    photographer: 'Ayuv Bastola',
+    lighting: 'Direct Sunset Sun Flare + Warm Bounce',
+    location: 'Rooftop Botanical Conservatory',
+    overview: 'Sun-drenched editorial portrait celebrating optical warmth, organic halation, and high dynamic range.',
+    metadata: {
+      lens: 'Sony FE 50mm f/1.2 GM',
+      focalLength: '50mm',
+      colorSpace: 'Warm Kodak Gold Emulation'
     }
   }
 ];
