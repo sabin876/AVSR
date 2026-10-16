@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { sounds } from '../utils/soundEffects';
-import logoImg from '../assets/logo.png';
+import logoImg from '../assets/Logo.svg';
 
 export default function Navbar({ onBookClick, onSocialClick }) {
   const [scrolled, setScrolled] = useState(false);
@@ -61,14 +61,14 @@ export default function Navbar({ onBookClick, onSocialClick }) {
           className="group flex items-center gap-3.5 text-white tracking-widest transition-transform active:scale-95"
           data-cursor="AVSR"
         >
-          <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center shrink-0">
-            <img src={logoImg} alt="AVSR VISION Logo" className="w-full h-full object-contain filter contrast-110 drop-shadow-md" />
+          <div className="relative w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center shrink-0">
+            <img src={logoImg} alt="AVSR VISION Logo" className="w-full h-full object-contain filter contrast-110 drop-shadow-md scale-125" />
           </div>
           <div className="flex flex-col">
-            <span className="font-display text-xl sm:text-2xl tracking-[0.22em] font-black text-white group-hover:text-[#e6b980] transition-colors leading-tight">
+            <span className="font-display text-2xl sm:text-3xl tracking-[0.22em] font-black text-white group-hover:text-[#e6b980] transition-colors leading-tight">
               AVSR VISION
             </span>
-            <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.3em] text-[#e6b980] font-semibold mt-0.5">
+            <span className="text-xs sm:text-sm uppercase tracking-[0.3em] text-[#e6b980] font-semibold mt-1">
               We Frame Moments
             </span>
           </div>

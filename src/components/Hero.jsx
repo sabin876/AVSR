@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Play, Pause, Volume2, VolumeX, ChevronRight, Repeat } from 'lucide-react';
 import { HERO_REELS } from '../data/portfolioData';
 import { sounds } from '../utils/soundEffects';
-import logoImg from '../assets/logo.png';
 import PhotoViewfinderCard from './PhotoViewfinderCard';
 import GlitchText from './GlitchText';
 
@@ -274,30 +273,6 @@ export default function Hero({ onExploreWork, onBookShoot }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left Column: Headline, Brand & CTAs */}
           <div className="lg:col-span-7 flex flex-col">
-            {/* Official Brand Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="inline-flex items-center gap-3.5 px-4 py-2 rounded-2xl bg-black/80 border border-[#e6b980]/40 backdrop-blur-md mb-6 w-fit shadow-[0_0_25px_rgba(230,185,128,0.2)]"
-            >
-              <img src={logoImg} alt="AVSR Logo" className="w-10 h-10 sm:w-12 sm:h-12 object-contain shrink-0 filter contrast-110 drop-shadow" />
-              <div className="flex flex-col">
-                <span className="text-xs sm:text-sm uppercase tracking-[0.25em] font-extrabold text-white">
-                  AVSR VISION
-                </span>
-                <GlitchText
-                  text="We Frame Moments, We Tell Stories"
-                  tag="span"
-                  delay={600}
-                  duration={800}
-                  loop={true}
-                  loopInterval={9000}
-                  className="text-[10px] uppercase tracking-[0.2em] text-[#e6b980] font-medium !font-mono"
-                />
-              </div>
-              <span className="w-2 h-2 rounded-full bg-[#e6b980] animate-ping ml-1" />
-            </motion.div>
 
             {/* Hero Tagline and Typography */}
             <motion.div

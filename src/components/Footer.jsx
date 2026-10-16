@@ -1,6 +1,6 @@
 import { ArrowUp, Globe, Sparkles } from 'lucide-react';
 import { sounds } from '../utils/soundEffects';
-import logoImg from '../assets/logo.png';
+import logoImg from '../assets/Logo.svg';
 
 export default function Footer({ onSocialClick }) {
   const scrollToTop = () => {
@@ -37,14 +37,14 @@ export default function Footer({ onSocialClick }) {
           {/* Brand Info */}
           <div className="md:col-span-5 space-y-5">
             <div className="flex items-center gap-5">
-              <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center shrink-0">
-                <img src={logoImg} alt="AVSR VISION Logo" className="w-full h-full object-contain filter contrast-110 drop-shadow-md" />
+              <div className="w-28 h-28 sm:w-36 sm:h-36 flex items-center justify-center shrink-0">
+                <img src={logoImg} alt="AVSR VISION Logo" className="w-full h-full object-contain filter contrast-110 drop-shadow-md scale-125" />
               </div>
               <div className="flex flex-col">
-                <span className="font-display text-2xl sm:text-3xl tracking-[0.2em] font-black text-white">
+                <span className="font-display text-2xl sm:text-4xl tracking-[0.2em] font-black text-white">
                   AVSR VISION
                 </span>
-                <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#e6b980] font-semibold mt-1">
+                <span className="text-xs sm:text-sm uppercase tracking-[0.25em] text-[#e6b980] font-semibold mt-1">
                   We Frame Moments, We Tell Stories
                 </span>
               </div>

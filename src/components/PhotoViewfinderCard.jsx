@@ -143,19 +143,8 @@ export default function PhotoViewfinderCard({ onBookShoot, activeReelIndex = 0, 
         >
           {/* Top Hardware Telemetry Header */}
           <div className="flex items-center justify-between px-3.5 py-2.5 bg-black/90 border-b border-white/[0.08] text-[10px] font-mono tracking-wider">
-            {/* Left: Tally & Live Timecode */}
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-red-950/80 border border-red-500/40 text-red-400">
-                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
-                <span className="font-bold tracking-widest text-[9px]">REC LIVE</span>
-              </div>
-              <span ref={timecodeRef} className="text-neutral-300 font-mono text-[10px] hidden sm:inline">
-                00:00:00:00
-              </span>
-            </div>
-
-            {/* Center: Camera Model */}
-            <div className="flex items-center gap-1.5 text-neutral-300 font-sans text-[11px] font-medium truncate max-w-[150px]">
+            {/* Left: Camera Model */}
+            <div className="flex items-center gap-1.5 text-neutral-300 font-sans text-[11px] font-medium truncate max-w-[200px]">
               <Camera className="w-3.5 h-3.5 text-[#e6b980] shrink-0" />
               <span className="truncate">{reel.camera}</span>
             </div>

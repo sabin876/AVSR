@@ -5,8 +5,7 @@ import {
   ArrowLeft, Share2, Check, ExternalLink, Sparkles,
   Download, QrCode, X, Copy, Camera, ShieldCheck
 } from 'lucide-react';
-import { sounds } from '../utils/soundEffects';
-import logoImg from '../assets/logo.png';
+import logoImg from '../assets/Logo.svg';
 
 export default function SocialMediaPage({ onBackToHome }) {
   const [copied, setCopied] = useState(false);
@@ -292,13 +291,13 @@ export default function SocialMediaPage({ onBackToHome }) {
             <motion.div 
               whileHover={{ scale: 1.08, rotate: [0, -3, 3, 0] }}
               transition={{ duration: 0.4 }}
-              className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1 bg-gradient-to-tr from-[#e6b980] via-[#f59e0b] to-[#141414] shadow-[0_0_40px_rgba(230,185,128,0.3)] mx-auto flex items-center justify-center cursor-pointer"
+              className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full p-1 bg-gradient-to-tr from-[#e6b980] via-[#f59e0b] to-[#141414] shadow-[0_0_40px_rgba(230,185,128,0.3)] mx-auto flex items-center justify-center cursor-pointer"
             >
               <div className="w-full h-full rounded-full bg-[#0c0d14] flex items-center justify-center overflow-hidden border border-white/10 relative">
                 <img
                   src={logoImg}
                   alt="AVSR VISION Logo"
-                  className="w-16 h-16 sm:w-20 sm:h-20 object-contain filter contrast-125 drop-shadow-md"
+                  className="w-24 h-24 sm:w-32 sm:h-32 object-contain filter contrast-125 drop-shadow-md scale-125"
                 />
               </div>
             </motion.div>
@@ -609,8 +608,8 @@ export default function SocialMediaPage({ onBackToHome }) {
                 <X className="w-4 h-4" />
               </button>
 
-              <div className="w-14 h-14 rounded-2xl bg-white/[0.06] border border-white/10 p-2 mx-auto flex items-center justify-center">
-                <img src={logoImg} alt="AVSR Logo" className="w-full h-full object-contain" />
+              <div className="w-20 h-20 rounded-2xl bg-white/[0.06] border border-white/10 p-2 mx-auto flex items-center justify-center">
+                <img src={logoImg} alt="AVSR Logo" className="w-full h-full object-contain scale-125" />
               </div>
 
               <div>
